@@ -6,12 +6,12 @@ import { signup } from "../../store/session";
 
 const SignupFormPage = () => {
     const dispatch = useDispatch();
-    const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const sessionUser = useSelector(state => state.session.user)
-    const [password, setPassword] = useState("") 
-    const [confirmPassword, setConfirmPassword] = useState("")
-    const [errors, setErrors] = useState([])
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const sessionUser = useSelector(state => state.session.user);
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/"/>
 

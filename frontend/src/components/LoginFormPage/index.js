@@ -6,10 +6,10 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [errors, setErrors] = useState([])
+    const sessionUser = useSelector(state => state.session.user);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -27,7 +27,7 @@ const LoginFormPage = () => {
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText])
             })
-    }
+    };
 
 
     return (
@@ -43,10 +43,10 @@ const LoginFormPage = () => {
             </label>
             <button type="submit">Login</button>
         </form>
-    )
+    );
 
 
-}
+};
 
 
 export default LoginFormPage; 
