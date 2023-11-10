@@ -1,0 +1,58 @@
+
+@font-face {
+    font-family: SF Pro;
+    src: url();
+}
+
+.login-form {
+    background-color: #1d1d1f;
+    color: white;
+    padding: 10%;
+}
+
+.form-items{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+}
+
+.errors {
+    position: absolute;
+}
+
+.auth-input {
+    display: flex;
+    flex-direction: column;
+    border-style: 10px rgb(0, 255, 0);
+}
+
+
+
+input {
+    background-color: #262628;
+}
+
+input[type=email] {
+    
+    padding: 8%;
+    border: 1px solid gray;
+    border-top-right-radius: 7%;
+    border-top-left-radius: 7%;
+    border-top: .5px solid gray;
+    
+
+
+}
+
+input[type=password] {
+    border-bottom-right-radius: 7%;
+    border-bottom-left-radius: 7%;
+    padding: 8%;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+
+}
+
