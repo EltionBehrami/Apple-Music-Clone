@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/session";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import './LoginFormPage.css';
 
 
 const LoginFormPage = () => {
@@ -14,8 +15,8 @@ const LoginFormPage = () => {
     if (sessionUser) return <Redirect to="/" />;
 
     const handleSubmit = e => {
-        let user = { email, password }
-        return dispatch(login(user))
+        e.preventDefault();
+        return dispatch(login({ email, password }))
             .catch(async (res) => {
                 let data;
                 try {
@@ -26,23 +27,26 @@ const LoginFormPage = () => {
                 if (data?.errors) setErrors(data.errors)
                 else if (data) setErrors([data]);
                 else setErrors([res.statusText])
-            })
+            });
     };
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map(error => <li key={error}>{error}</li>)}
-            </ul>
-            <label>Email
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-            </label>
-            <label>Password
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            </label>
-            <button type="submit">Login</button>
-        </form>
+            <form onSubmit={handleSubmit} className="login-form">
+                <ul className="errors">
+                    {errors.map(error => <li key={error}>{error}</li>)}
+                </ul>
+                <div className="form-items">
+                    <p>Cherry</p>
+                    <h1>Sign in</h1>
+                    <p>Enter your email and password to begin</p>
+                    <div className="auth-input">
+                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
+                    <button type="submit">Login</button>
+                </div>
+            </form>      
     );
 
 

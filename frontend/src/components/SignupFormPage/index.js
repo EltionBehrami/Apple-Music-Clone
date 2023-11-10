@@ -16,10 +16,10 @@ const SignupFormPage = () => {
     if (sessionUser) return <Redirect to="/"/>
 
     const handleSubmit = e => {
-        let user = {name, email, password}
+        e.preventDefault();
         if (confirmPassword === password){
             setErrors([]); 
-            return dispatch(signup(user))
+            return dispatch(signup({name, email, password}))
                 .catch(async (res) => {
                     let data;
                     try{
@@ -34,6 +34,7 @@ const SignupFormPage = () => {
         }
         return setErrors(["Password fields must match"])
     }
+
 
     return (
         <form onSubmit={handleSubmit}>
