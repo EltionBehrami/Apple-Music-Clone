@@ -16,14 +16,18 @@ ApplicationRecord.transaction do
     puts "Creating users..."
 
     User.create!(
-    name: 'Demo-User', 
+    first_name: 'Eltion', 
+    last_name: 'Behrami', 
+    birthdate: Faker::Date.birthday(min_age: 18, max_age: 65),
     email: 'demo@user.io', 
     password: 'password',
     )
 
     10.times do 
         User.create!({
-            name: Faker::Name.name,
+            first_name: Faker::Name.first_name,
+            last_name: Faker::Name.last_name,
+            birthdate: Faker::Date.birthday(min_age: 18, max_age: 65),
             email: Faker::Internet.unique.email,
             password: 'password'
         }) 

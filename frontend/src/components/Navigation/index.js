@@ -1,9 +1,12 @@
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import ProfileButton from "./ProfileButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { openModal } from "../../store/modal";
+
+
 
 const Navigation = () => {
-    
+    const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
 
     let sessionLinks; 
@@ -12,8 +15,9 @@ const Navigation = () => {
     } else {
         sessionLinks = (
             <>
-                <NavLink to="/login">Login</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
+                <button onClick={() => dispatch(openModal('login'))}>LOGIN</button>
+                <button onClick={() => dispatch(openModal('signup'))}>SIGN UP</button>
+
             </>
         );
     } 

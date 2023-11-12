@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../store/session";
+import { login } from "../../../store/session";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import './LoginFormPage.css';
+import { closeModal } from "../../../store/modal";
 
 
 const LoginFormPage = () => {
@@ -11,6 +12,10 @@ const LoginFormPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
+
+
+
+
 
     if (sessionUser) return <Redirect to="/" />;
 
@@ -37,14 +42,13 @@ const LoginFormPage = () => {
                     {errors.map(error => <li key={error}>{error}</li>)}
                 </ul>
                 <div className="form-items">
-                    <p>Cherry</p>
-                    <h1>Sign in</h1>
-                    <p>Enter your email and password to begin</p>
-                    <div className="auth-input">
-                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                    </div>
-                    <button type="submit">Login</button>
+                    {/* <div className="logo"> Cherry </div> */}
+                    <div className="header-login">Sign In</div>
+                    <div className="subtitle">Enter your email and password to get started.</div>
+                        <input id="login-email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input id="login-password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <button className="login-button" type="submit">L</button>
+                        <button className="exit-button" onClick={() => dispatch(closeModal("null"))}> X </button>
                 </div>
             </form>      
     );

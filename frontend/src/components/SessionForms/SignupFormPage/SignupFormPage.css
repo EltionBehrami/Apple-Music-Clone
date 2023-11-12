@@ -1,0 +1,141 @@
+
+@font-face {
+    font-family: SF Pro;
+    src: url('/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro.ttf') format('ttf')
+}
+
+@font-face {
+    font-family: SF-Pro Display;
+    src: url(/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro-Display-Regular.otf);
+}
+@font-face {
+    font-family: SF-Pro Text-Light;
+    src: url(/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro-Text-Light.otf);
+}
+@font-face {
+    font-family: SF-Pro Text-Regular;
+    src: url(/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro-Text-Regular.otf);
+}
+
+
+.signup-form-container {
+    /* border: 1px solid green; */
+    /* height: 90vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    font-family: SF-Pro Text-Light;
+    
+}
+
+.signup-form {
+    color: white;
+    /* border: 1px solid red; */
+    height: 500px;
+    width: 530px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.subheader {
+    color: gray;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.submit {
+    /* border: cyan 1px; */
+    color: white;
+    background-color: #151518;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.signup-form-items {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 100%;
+}
+
+#signup-email {
+    background-color: #262628;
+    padding: 3%;
+    border: 1px solid #424245;
+    border-radius: 10px;
+    font-size: medium;
+    width: 93.5%;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    margin-bottom: 12px;
+}
+#signup-password {
+    background-color: #262628;
+    padding: 3%;
+    border: 1px solid #424245;
+    border-radius: 10px;
+    font-size: medium;
+    width: 93.5%;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    margin-bottom: 12px;
+}
+#signup-confirm-password {
+    background-color: #262628;
+    padding: 3%;
+    border: 1px solid #424245;
+    border-radius: 10px;
+    font-size: medium;
+    width: 93.5%;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    margin-bottom: 15px;
+}
+
+#signup-name {
+    background-color: #262628;
+    padding: 3%;
+    border: 1px solid #424245;
+    border-radius: 10px;
+    font-size: medium;
+    width: 93.5%;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    margin-bottom: 15px;
+}
+
+
+
+.header{
+    display: flex;
+    justify-content: center;
+    /* border: red solid 1px; */
+    margin-top: 42px;
+    margin-bottom: 20px;
+    color: #f5f5f7;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.submit-button {
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+    background-color: #fa233b;
+    border-radius: 5px;
+    color: white;
+    font-family: SF-Pro Text-Light;
+    padding: 5px;
+    font-size: medium;
+    width: 100px;
+} 
+
+.left-signup, .right-signup {
+    width: 135px;
+    height: 500px;
+    border: 1px solid blue;
+}
+
+
+
