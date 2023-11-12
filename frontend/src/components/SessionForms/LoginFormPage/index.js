@@ -6,7 +6,7 @@ import './LoginFormPage.css';
 import { closeModal } from "../../../store/modal";
 
 
-const LoginFormPage = () => {
+const LoginFormPage = ({ modal }) => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const [email, setEmail] = useState("");
@@ -19,21 +19,24 @@ const LoginFormPage = () => {
 
     if (sessionUser) return <Redirect to="/" />;
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        return dispatch(login({ email, password }))
-            .catch(async (res) => {
-                let data;
-                try {
-                    data = await res.clone.json(); 
-                } catch {
-                    data = await res.text(); 
-                }
-                if (data?.errors) setErrors(data.errors)
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText])
-            });
+        try {
+            await dispatch(login({ email, password }))
+                dispatch(closeModal(modal))
+        } catch (res) {
+            let data;
+            try {
+                data = await res.clone.json(); 
+            } catch {
+                data = await res.text(); 
+            }
+            if (data?.errors) setErrors(data.errors)
+            else if (data) setErrors([data]);
+            else setErrors([res.statusText])
+        };
     };
+
 
 
     return (

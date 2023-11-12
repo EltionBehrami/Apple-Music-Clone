@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { closeModal } from "./modal";
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
@@ -39,11 +40,13 @@ export const login = (user) => async dispatch => {
 
 
 export const signup = (user) => async (dispatch) => {
-    const { name, email, password } = user;
+    const { firstName, lastName, birthdate, email, password } = user;
     const response = await csrfFetch("/api/users", {
         method: "POST",
         body: JSON.stringify({
-            name,
+            firstName,
+            lastName,
+            birthdate,
             email,
             password
         })
@@ -52,6 +55,7 @@ export const signup = (user) => async (dispatch) => {
     const data = await response.json();
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
+    dispatch(closeModal("null"))
     return response;
 };
 

@@ -16,10 +16,10 @@ const Modal = () => {
     let component;
     switch (modal) {
         case 'login':
-            component = <LoginFormPage />;
+            component = <LoginFormPage modal={"null"}/>;
             break;
         case 'signup':
-            component = <SignupFormPage />;
+            component = <SignupFormPage  modal={"null"} />;
             break;
         default:
             return null;

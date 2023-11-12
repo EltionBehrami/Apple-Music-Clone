@@ -93,7 +93,29 @@
     margin-bottom: 15px;
 }
 
-#signup-name {
+#signup-firstname {
+    background-color: #262628;
+    padding: 3%;
+    border: 1px solid #424245;
+    border-radius: 10px;
+    font-size: medium;
+    width: 93.5%;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    margin-bottom: 15px;
+}
+#signup-lastname {
+    background-color: #262628;
+    padding: 3%;
+    border: 1px solid #424245;
+    border-radius: 10px;
+    font-size: medium;
+    width: 93.5%;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    margin-bottom: 15px;
+}
+#signup-birthdate {
     background-color: #262628;
     padding: 3%;
     border: 1px solid #424245;

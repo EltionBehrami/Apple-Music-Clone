@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { signup } from "../../../store/session";
 import './SignupFormPage.css';
+import { closeModal } from "../../../store/modal";
 
 
-const SignupFormPage = () => {
+const SignupFormPage = ({ modal }) => {
     const dispatch = useDispatch();
-    const [name, setName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [birthdate, setBirthdate] = useState("");
     const [email, setEmail] = useState("");
     const sessionUser = useSelector(state => state.session.user);
     const [password, setPassword] = useState("");
@@ -16,11 +19,13 @@ const SignupFormPage = () => {
 
     if (sessionUser) return <Redirect to="/"/>
 
-    const handleSubmit = e => {
+
+
+    const handleSubmit = async e => {
         e.preventDefault();
         if (confirmPassword === password){
             setErrors([]); 
-            return dispatch(signup({name, email, password}))
+            return dispatch(signup({firstName, lastName, birthdate, email, password}))
                 .catch(async (res) => {
                     let data;
                     try{
@@ -53,9 +58,9 @@ const SignupFormPage = () => {
                         <input id="signup-password"type="password"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         <div className="subheader">Your password must have at least 6 characters.</div>
                         <input id="signup-confirm-password"type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-                        <input id="signup-name"type="text" placeholder="First Name" value={name} onChange={(e) => setName(e.target.value)} required />
-                        <input id="signup-name"type="text" placeholder="Last Name" value={name} onChange={(e) => setName(e.target.value)} required />
-                        <input id="signup-name"type="text" placeholder="Country/Region" value={name} onChange={(e) => setName(e.target.value)} required />
+                        <input id="signup-firstname"type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.currentTarget.value)} required />
+                        <input id="signup-lastname"type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.currentTarget.value)} required />
+                        <input id="signup-birthdate"type="date" placeholder="Birthdate" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} required />
                         <button className="submit-button" type="submit">Sign Up</button>
                     </div>
             </form>
