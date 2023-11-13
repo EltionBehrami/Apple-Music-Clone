@@ -1,5 +1,7 @@
 import csrfFetch from "./csrf";
 import { closeModal } from "./modal";
+import { storeCSRFToken } from "./csrf";
+
 const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
@@ -38,6 +40,15 @@ export const login = (user) => async dispatch => {
 
 };
 
+export const restoreSession = () => async dispatch => {
+    const response = await csrfFetch("/api/session");
+    storeCSRFToken(response);
+    const data = await response.json();
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
+    return response;
+};
+
 
 export const signup = (user) => async (dispatch) => {
     const { firstName, lastName, birthdate, email, password } = user;
@@ -69,7 +80,9 @@ export const logout = () => async dispatch => {
     return res;
 }
 
-const initialState = { user: null };
+const initialState = { 
+    user: JSON.parse(sessionStorage.getItem("currentUser"))
+};
 
 const sessionReducer = (state = initialState, action) => {
     switch (action.type) {

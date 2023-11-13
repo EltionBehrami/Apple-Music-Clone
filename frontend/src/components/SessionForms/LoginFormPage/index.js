@@ -11,10 +11,7 @@ const LoginFormPage = ({ modal }) => {
     const sessionUser = useSelector(state => state.session.user);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
-
-
-
+    const [errors, setErrors] = useState();
 
 
     if (sessionUser) return <Redirect to="/" />;
@@ -35,15 +32,30 @@ const LoginFormPage = ({ modal }) => {
             else if (data) setErrors([data]);
             else setErrors([res.statusText])
         };
+
+        return setErrors(['Your Cherry ID or password was incorrect.'])
+    };
+
+    const handleDemo = (e) => {
+        e.preventDefault();
+        const demoCredentials = {
+                email: "demo@user.io",
+                password: "passsword"
+        };
+        dispatch(login(demoCredentials));
     };
 
 
 
     return (
             <form onSubmit={handleSubmit} className="login-form">
+                { errors && (
+                    <div id="login-errors-container">
                 <ul className="errors">
-                    {errors.map(error => <li key={error}>{error}</li>)}
+                    {errors.map(error => <li id="login-error" key={error}>{error}</li>)}
                 </ul>
+                    </div>
+                )}
                 <div className="form-items">
                     {/* <div className="logo"> Cherry </div> */}
                     <div className="header-login">Sign In</div>
@@ -52,6 +64,7 @@ const LoginFormPage = ({ modal }) => {
                         <input id="login-password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         <button className="login-button" type="submit">L</button>
                         <button className="exit-button" onClick={() => dispatch(closeModal("null"))}> X </button>
+                        <button id="demo" onClick={handleDemo}>Demo User</button>
                 </div>
             </form>      
     );

@@ -45,11 +45,11 @@ const SignupFormPage = ({ modal }) => {
     return (
         <>
         <div className="signup-form-container">
-            <div className="signup-exit"> X </div>
+            <div className="signup-exit"> <button className="exit-button" onClick={() => dispatch(closeModal("null"))}> X </button> </div>
             <form onSubmit={handleSubmit} className="signup-form">
                 
-                    <div className="header">Create Cherry ID</div>
-                    <ul className="errors">
+                    <div className="cherry-id">Create Cherry ID</div>
+                    <ul className="signup-errors">
                         {errors.map(error => <li key={error}>{error}</li>)}
                     </ul>
                     <div className="signup-form-items"> 
@@ -64,7 +64,7 @@ const SignupFormPage = ({ modal }) => {
                         <button className="submit-button" type="submit">Sign Up</button>
                     </div>
             </form>
-            <div className="signup-logo"> Logo </div>
+            <div className="signup-logo"> </div>
         </div>
         <div className="submit"></div>
         </>
