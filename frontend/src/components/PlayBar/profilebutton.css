@@ -1,0 +1,46 @@
+#profile-button {
+    margin-left: 165px;
+    fill: #eb5364;
+    border-radius: 10px;
+    color: white;
+    font-family: SF-Pro Text-Light;
+    padding: 5px;
+    font-size: medium;
+    width: 90px;
+    border-style: none;
+}
+
+#profile-button:hover {
+    cursor: pointer;
+}
+
+.dropdown {
+    /* border: greenyellow 1px solid; */
+    position: absolute;
+    top: 40px;
+    right: 25px;
+    color: white;
+    width: 184px;
+}
+
+#logout-button {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    width: 100%;
+    border-style: none;
+    background-color: #1e1e1e;
+    font-family: SF-Pro Text-Light;
+    color: #f1392f;
+    border-radius: 10px; 
+    border: rgb(70, 70, 70) solid 1px;
+    font-size: medium;
+}
+
+#logout-button:hover {
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    cursor: pointer;
+}

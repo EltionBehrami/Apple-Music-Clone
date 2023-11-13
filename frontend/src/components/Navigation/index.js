@@ -1,38 +1,24 @@
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
-import ProfileButton from "./ProfileButton";
-import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../store/modal";
-
-
+import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import "./nav.css"
 
 const Navigation = () => {
-    const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
 
-    let sessionLinks; 
-    if (sessionUser) {
-        sessionLinks = (<ProfileButton user={sessionUser} />)
-    } else {
-        sessionLinks = (
-            <>
-                <button onClick={() => dispatch(openModal('login'))}>LOGIN</button>
-                <button onClick={() => dispatch(openModal('signup'))}>SIGN UP</button>
 
-            </>
-        );
-    } 
 
-    
 
 
     return (
-        <ul>
-            <li>
-            <NavLink to="/">Home</NavLink>
-            {sessionLinks}
-            </li>
-        </ul>   
+        <>
+            <div className="nav-container">
+                <NavLink to="/">Cherry Music</NavLink>
+                <ul className="library-links">
+                    <li><NavLink to="/artists">Artists</NavLink></li>
+                    <li><NavLink to="/albums">Albums</NavLink></li>
+                    <li><NavLink to="/songs">Songs</NavLink></li>
+                </ul>
+            </div>
+        </>
     )
 }
 
-export default Navigation
+export default Navigation;
