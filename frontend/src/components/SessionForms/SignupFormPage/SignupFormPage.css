@@ -1,5 +1,5 @@
 
-@font-face {
+/* @font-face {
     font-family: SF Pro;
     src: url('/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro.ttf') format('ttf')
 }
@@ -15,7 +15,7 @@
 @font-face {
     font-family: SF-Pro Text-Regular;
     src: url(/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro-Text-Regular.otf);
-}
+} */
 
 
 .signup-form-container {
