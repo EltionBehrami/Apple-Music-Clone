@@ -24,7 +24,7 @@
     font-family: SF Pro Display;
     border-radius: 10px;
     height: 100%;
-    border: greenyellow 1px solid;
+    /* border: greenyellow 1px solid; */
 }
 
 .logo {
@@ -60,7 +60,7 @@
     align-items: center;
     justify-content: center;
     width: 70%;
-    border: green solid 1px;
+    /* border: green solid 1px; */
     margin-bottom: 190px;
 }
 

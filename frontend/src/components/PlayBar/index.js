@@ -27,23 +27,11 @@ const PlayBar = () => {
 
 
     return (
-            <div className="nav-containers">
-                <div className="left-container">
-                    <NavLink id="home" to="/">Cherry Music</NavLink>
-                    <ul className="library-links">
-                        {/* <li><NavLink to="/artists">Artists</NavLink></li>
-                        <li><NavLink to="/albums">Albums</NavLink></li>
-                        <li><NavLink to="/songs">Songs</NavLink></li> */}
-                    </ul>
-                </div>
-
-                <div className="playbar">
-                    <li className="session-links">
-                    {sessionLinks}
-                    </li>    
-                </div>
-            </div>
-        
+            <div className="playbar">
+                <li className="session-links">
+                {sessionLinks}
+                </li>    
+            </div>  
     
     )
 }
