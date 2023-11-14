@@ -2,8 +2,7 @@
 .left-container {
     display: flex;
     flex-direction: column;
-    border: solid blue 1px; 
-    /* width: 310px;  */
+    /* border: solid blue 1px;  */
     background-color: #252526;
     border-right: rgb(60, 60, 60) solid 1px;
     height: 100vh;

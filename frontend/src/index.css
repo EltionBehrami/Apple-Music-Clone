@@ -14,8 +14,7 @@ body {
 }
 
 .playbar-container {
-    /* margin-left: 310px; */
-    border: greenyellow 1px solid;
+    /* border: greenyellow 1px solid; */
     margin-bottom: 100%;
     width: 100%;
     height: 100vh;

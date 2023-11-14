@@ -36,13 +36,14 @@ const LoginFormPage = ({ modal }) => {
         return setErrors(['Your Cherry ID or password was incorrect.'])
     };
 
-    const handleDemo = (e) => {
+    const handleDemo = async (e) => {
         e.preventDefault();
         const demoCredentials = {
                 email: "demo@user.io",
-                password: "passsword"
+                password: "password"
         };
-        dispatch(login(demoCredentials));
+        await dispatch(login(demoCredentials))
+        dispatch(closeModal("null"))
     };
 
 

@@ -33,6 +33,17 @@ ApplicationRecord.transaction do
         }) 
     end
 
+    Artist.create!({
+        name: "test artist"
+    })
+
+    20.times do Album.create!({
+        title: Faker::Music.album, 
+        artist_id: 1, 
+        album_cover: "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/67/f8/0c/67f80cef-4d4e-4792-1c69-c1d614065005/197189165450.jpg/296x296bf.webp"
+    })
+end 
+
 
     puts "Done!"
 

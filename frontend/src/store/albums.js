@@ -12,7 +12,7 @@ const receiveAlbums = albums => {
 }
 
 export const getAlbums = state => {
-    return state?.albums ? state.albums : []; 
+    return state?.albums ? Object.values(state.albums) : []; 
 }
 
 

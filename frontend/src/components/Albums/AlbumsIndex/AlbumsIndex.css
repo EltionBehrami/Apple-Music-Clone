@@ -1,0 +1,12 @@
+.index-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    grid-gap: 1.25%; 
+    color: white;
+    border: pink solid 1px;
+    height: 94%;
+    overflow-y: scroll;
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
