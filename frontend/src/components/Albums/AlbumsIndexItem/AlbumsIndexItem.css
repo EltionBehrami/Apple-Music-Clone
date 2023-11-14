@@ -1,0 +1,9 @@
+.album-index-item {
+    
+    border: 1px greenyellow solid;
+}
+
+.album-cover {
+    border-radius: 10px;
+    width: 100%;
+}
