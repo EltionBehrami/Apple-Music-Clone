@@ -7,7 +7,7 @@ const AlbumIndexItem = ( {album} ) => {
         <>
             <div className="album-index-item">
                 <img className="album-cover" src={album.albumCover}/>
-                <div>{album.title}</div>
+                <div className="album-title">{album.title}</div>
             </div>
         </>
     )

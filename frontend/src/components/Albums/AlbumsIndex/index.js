@@ -18,10 +18,11 @@ const AlbumsIndex = () => {
 
     return (
         <>
-        {currentUser && (
-            <div className="index-container">
-                {albums.map(album => <AlbumIndexItem  album={album}/>)}
-            </div>
+                <div className="index-header">Albums</div>
+            {currentUser && (
+                <div className="index-container">
+                    {albums.map(album => <AlbumIndexItem  album={album}/>)}
+                </div>
         )}
         </>
 

@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom/cjs/react-router-dom.min";
 import Modal from "./components/Modal";
 import PlayBar from "./components/PlayBar";
 import Navigation from "./components/Navigation";
