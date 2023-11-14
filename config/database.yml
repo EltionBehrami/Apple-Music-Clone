@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: apple_music_clone_production
-  username: apple_music_clone
-  password: <%= ENV["APPLE_MUSIC_CLONE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
