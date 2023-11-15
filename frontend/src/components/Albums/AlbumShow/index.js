@@ -21,11 +21,14 @@ const AlbumShow = () => {
         <>
             <div className="album-show-container">
                 <div className="album-show-header">
-                    <img className="album-show-cover" src={album?.albumCover}/>
-                    <div className="album-header">
-                        <div className="album-header-title" > {album?.title} </div>
-                        <div className="album-artist"> Él mató a un Policía Motorizado</div>
-                        <div> Latin </div>
+                    <div id="album-cover-container"><img className="album-show-cover" src={album?.albumCover}/> </div>
+                    <div id="album-show-right-header"> 
+                        <div className="album-header">
+                            <div className="album-header-title" > {album?.title} </div>
+                            <div className="album-artist"> {album?.artistName}</div>
+                            <div className="album-genre"> ROCK </div>
+                        </div>
+                        <div id="album-play"> <button id="album-play-button" > Play </button> </div>
                     </div>
                 </div>
                 <div className="album-songs-container">

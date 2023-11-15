@@ -3,18 +3,20 @@ import { fetchAlbums, getAlbums } from "../../../store/albums";
 import { useEffect } from "react";
 import "./AlbumsIndex.css"
 import AlbumIndexItem from "../AlbumsIndexItem";
+import { fetchArtists } from "../../../store/artist";
 
 const AlbumsIndex = () => {
     const dispatch = useDispatch();
-    const albums = useSelector(getAlbums)
-    const currentUser = useSelector(state => state.session.user)
+    const albums = useSelector(getAlbums);
+    const currentUser = useSelector(state => state.session.user);
     
 
     useEffect(() => {
         if (currentUser) {
-            dispatch(fetchAlbums())
+            dispatch(fetchAlbums());
         }
-    }, [])
+    }, [dispatch]);
+
 
     return (
         <>

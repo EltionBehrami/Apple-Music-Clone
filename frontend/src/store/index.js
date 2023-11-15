@@ -3,12 +3,14 @@ import thunk from "redux-thunk"
 import sessionReducer from "./session";
 import modalReducer from "./modal";
 import albumsReducer from "./albums";
+import artistsReducer from "./artist";
 
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     modal: modalReducer,
-    albums: albumsReducer
+    albums: albumsReducer,
+    artists: artistsReducer
 });
 
 let enhancer;

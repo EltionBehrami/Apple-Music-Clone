@@ -6,7 +6,7 @@
 .index-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15%, 1fr)); 
-    grid-template-rows: repeat(auto-fill, minmax(35%, 1fr)); 
+    grid-template-rows: repeat(auto-fill, minmax(40%, 1fr)); 
     grid-gap: 1.5%; 
     color: white;
     /* border: pink solid 1px; */

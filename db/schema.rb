@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_14_152955) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_15_042556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
     t.string "title", null: false
     t.bigint "artist_id", null: false
+    t.string "album_cover"
+    t.string "genre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "album_cover"
+    t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["title"], name: "index_albums_on_title"
   end
 
@@ -29,15 +31,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_152955) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_artists_on_name"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.string "title", null: false
-    t.bigint "artist_id", null: false
-    t.bigint "album_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["title"], name: "index_songs_on_title"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +46,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_14_152955) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  add_foreign_key "albums", "artists"
 end
