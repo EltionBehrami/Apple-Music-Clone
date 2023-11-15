@@ -7,4 +7,60 @@
     border-right: rgb(60, 60, 60) solid 1px;
     height: 100vh;
     /* width: 260px; */
+    margin-left: 20px;
+    
+}
+
+.library-links {
+    /* margin-left: 10px; */
+    display: flex;
+    justify-content: flex-start;
+    /* border: red 1px solid; */
+    margin-top: 50px;
+    margin-right: 30px;
+}
+
+#album-link {
+    /* border: aqua 1px solid; */
+    background-color: #252526;
+    text-decoration: none;
+    width: 100%;
+    color :#ffffffeb;
+    font-family: SF-Pro Text-Light;
+    font-size: 15px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-style: none;
+
+}
+
+#inactive-link {
+    padding-left: 20px;
+    /* border: 1px greenyellow solid; */
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color :#ffffffeb;
+    width: 100%;
+    height: 30px;
+    text-decoration: none;
+}
+
+.active-albums-link {
+    background-color: #3f3f41;
+    border-radius: 8px;
+    text-decoration: none;
+    height: 100%;
+    color :#ffffffeb;
+    font-family: SF-Pro Text-Light;
+    /* font-size: 15px;
+    height: 35px; */
+    display: flex;
+    align-items: center;
+}
+
+
+#home {
+    font-size: 25px;
 }

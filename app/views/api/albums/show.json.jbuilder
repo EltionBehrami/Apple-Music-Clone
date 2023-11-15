@@ -1,4 +1,5 @@
 
 json.album do
-    json.extract! @album, :id, :title, :album_cover, :artist_id, :created_at, :updated_at
+    json.extract! @album, :id, :title, :album_cover, :artist_id, :genre, :created_at, :updated_at
+    json.set! 'artist_name', @album.artist.name
 end 

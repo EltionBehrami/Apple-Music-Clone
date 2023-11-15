@@ -8,9 +8,7 @@ const Navigation = () => {
             <div className="left-container">
                     <NavLink id="home" to="/">Cherry Music</NavLink>
                     <ul className="library-links">
-                        {/* <li><NavLink to="/artists">Artists</NavLink></li>
-                        <li><NavLink to="/albums">Albums</NavLink></li>
-                        <li><NavLink to="/songs">Songs</NavLink></li> */}
+                        <button id="album-link"><NavLink to="/albums" id="inactive-link" activeClassName="active-albums-link"> Albums</NavLink></button>
                     </ul>
             </div>
         </>
