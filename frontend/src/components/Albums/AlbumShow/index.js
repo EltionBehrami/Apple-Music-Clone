@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { fetchAlbum, getAlbum } from "/Users/eltionbehrami/apple_music_clone/frontend/src/store/albums.js";
 import "./AlbumShow.css"
+import SongsIndexItem from "../../Songs/SongsIndexItem";
+import TracksIndexItem from "../Tracks/TracksIndexItem";
+import TracksIndex from "../Tracks/TracksIndex";
 
 const AlbumShow = () => {
 
     const { albumId } = useParams(); 
     const album = useSelector(getAlbum(albumId))
     const dispatch = useDispatch(); 
+    
     debugger 
     
     useEffect(() => {
@@ -26,13 +30,16 @@ const AlbumShow = () => {
                         <div className="album-header">
                             <div className="album-header-title" > {album?.title} </div>
                             <div className="album-artist"> {album?.artistName}</div>
-                            <div className="album-genre"> ROCK </div>
+                            <div className="album-genre"> {album?.genre} </div>
                         </div>
                         <div id="album-play"> <button id="album-play-button" > Play </button> </div>
                     </div>
                 </div>
                 <div className="album-songs-container">
-                    <p> song </p>
+                    {album && (
+                        <TracksIndex album={album}/>
+                        // Object.values(album.albumSongs).map(song => <TracksIndexItem track={song}/>)
+                    )}
                 </div>
             </div>
         </>

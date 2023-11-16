@@ -4,13 +4,15 @@ import sessionReducer from "./session";
 import modalReducer from "./modal";
 import albumsReducer from "./albums";
 import artistsReducer from "./artist";
+import songsReducer from "./songs";
 
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     modal: modalReducer,
     albums: albumsReducer,
-    artists: artistsReducer
+    artists: artistsReducer,
+    songs: songsReducer
 });
 
 let enhancer;
