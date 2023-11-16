@@ -1,6 +1,6 @@
 .track-item-container {
     /* border: solid red 1px; */
-    margin-right: 50px;
+    /* margin-right: 50px; */
     height: 47px;;
     display: flex;
     align-items: center;
@@ -26,7 +26,6 @@
     /* border: blue solid 1px; */
     display: flex;
     align-items: center;
-    margin-right: 10px;;
 }
 
 .left-track-container {
@@ -35,13 +34,14 @@
 
 
 #track-button {
-   fill: #eb5364;
+    fill: #eb5364;
+    margin-right: 5px;
 }
 
 #track-duration{
     margin-right: 5px;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 11px;
     color: #dadadaeb
 }
 
