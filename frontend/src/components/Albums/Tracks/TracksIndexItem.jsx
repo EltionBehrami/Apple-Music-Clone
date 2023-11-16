@@ -1,9 +1,12 @@
 import "./TracksIndexItem.css"
 
 
-const TracksIndexItem = ({ track }) => {
+
+const TracksIndexItem = ({ track, isActive, onClick }) => {
+
     return (
-        <div className="track-item-container">
+        <div className={isActive ? "track-item-container-active" : "track-item-container"}
+        onClick={onClick}>
             <div className="left-track-container">
                 <span id="track-number">{track.id}</span>
                 <span id="track-title">{track.title}</span>
