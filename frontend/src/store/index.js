@@ -5,6 +5,7 @@ import modalReducer from "./modal";
 import albumsReducer from "./albums";
 import artistsReducer from "./artist";
 import songsReducer from "./songs";
+import playbarReducer from "./playbar";
 
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     modal: modalReducer,
     albums: albumsReducer,
     artists: artistsReducer,
-    songs: songsReducer
+    songs: songsReducer,
+    playbar: playbarReducer
 });
 
 let enhancer;

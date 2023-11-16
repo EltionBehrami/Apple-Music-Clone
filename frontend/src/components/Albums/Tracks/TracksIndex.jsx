@@ -1,15 +1,19 @@
 import TracksIndexItem from "./TracksIndexItem"
 import "./TracksIndex.css"
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { playSong, pauseSong} from "../../../store/playbar";
 
 const TracksIndex = ( {album} ) => {
 
-    const tracks = album.albumSongs
     const [activeItemId, setActiveItemId] = useState(null)
+    const dispatch = useDispatch();
+    const isPlaying = useSelector(state => state.playbar.isPlaying)
 
     const handleItemClick = (itemId) => {
         setActiveItemId(itemId === activeItemId ? null : itemId);
-      };
+        dispatch( isPlaying ? pauseSong(itemId) : playSong(itemId))
+    };
 
     return (
         <ul className="tracks-index-container ">

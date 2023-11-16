@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import ProfileButton from "./ProfileButton";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../store/modal";
 import "./playbar.css"
+import SongDisplay from "./SongDisplay";
+import Controls from "./Controls";
+import Volume from "./Volume";
 
 
 
@@ -28,11 +30,13 @@ const PlayBar = () => {
 
     return (
             <div className="playbar">
+                <Controls />
+                <SongDisplay />
+                <Volume />
                 <li className="session-links">
                 {sessionLinks}
                 </li>    
             </div>  
-    
     )
 }
 
