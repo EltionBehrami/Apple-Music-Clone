@@ -46,7 +46,7 @@ ApplicationRecord.transaction do
     })
 end
 
-    20.times do Song.create!({
+    500.times do Song.create!({
         title: Faker::Music::RockBand.song,
         artist_id: 1,
         album_id: rand(1..20)
