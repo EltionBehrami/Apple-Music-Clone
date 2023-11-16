@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAlbums, getAlbums } from "../../../store/albums";
 import { useEffect } from "react";
-import "./AlbumsIndex.css"
 import AlbumIndexItem from "../AlbumsIndexItem";
-import { fetchArtists } from "../../../store/artist";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import "./AlbumsIndex.css"
+
 
 const AlbumsIndex = () => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const AlbumsIndex = () => {
                 <div className="index-header">Albums</div>
             {currentUser && (
                 <div className="index-container">
-                    {albums.map(album => <AlbumIndexItem  album={album}/>)}
+                    {albums.map(album => <Link id="album-show-link" to={`/albums/${album.id}`}> <AlbumIndexItem  album={album}/></Link>)}
                 </div>
         )}
         </>

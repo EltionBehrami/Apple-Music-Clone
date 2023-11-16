@@ -16,10 +16,6 @@
     src: url(/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro-Text-Regular.otf);
 }
 
-/* @font-face {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    src: url();
-} */
 
 
 .album-index-item {
@@ -28,6 +24,8 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 12px;
     font-weight: 300;
+    color: #ffffffa3;
+    text-decoration: none;
     /* border: 1px greenyellow solid;  */
     height: 100%;
     margin-bottom: 25%;
@@ -39,25 +37,20 @@
 }
 
 .album-cover:hover {
-    filter: grayscale(25%);
+    filter: grayscale(30%);
     cursor: pointer;
     transition: 0.2s;
 }
 
 .album-title {
-    /* display: flex;
-    flex-wrap: wrap; */
-    /* border: 1px solid pink; */
     margin-left: 3px;
     margin-top: 5px;
+    text-decoration: none;
+    color: #ffffffeb;
 }
 
 .album-artist-index {
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* border: 1px solid pink; */
     margin-left: 3px;
-    /* margin-top: 5px; */
     font-weight: 200;
     color: #ffffffa3;
 }
