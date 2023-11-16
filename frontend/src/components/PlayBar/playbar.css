@@ -10,12 +10,14 @@
 }
 
 
+
 .playbar {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
     /* border: greenyellow solid 1px; */
     background-color: #2c2c2c;
     height: 54px;
+    color: white;
     /* width: 100%; */
     /* margin-left: 310px; */
 
