@@ -1,32 +1,51 @@
 import { playSong, pauseSong } from "../../../store/playbar";
 import "./Controls.css"
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import songfile from "/Users/eltionbehrami/apple_music_clone/frontend/src/01 The Adults Are Talking.mp3"
 
 
 const Controls = () => {
     const dispatch = useDispatch(); 
     const isPlaying = useSelector(state => state.playbar.isPlaying)
-    const [isActive, setIsActive] = useState(false);
-    // const currentSong = useSelector(state => state.playbar.currentSong)
+    const audioRef = useRef(null)
+    const currentSong = useSelector(state => state.playbar.currentSong)
+    const audio = currentSong ? currentSong.song_url : null
+    const [volume, setVolume] = useState(0)
 
-
+    useEffect(() => {
+        if (audioRef.current) {
+            if (isPlaying) {
+            audioRef.current.play();
+            } else {
+            audioRef.current.pause();
+            }
+        }
+    }, [isPlaying]);
+    
     const play = () => {
-        isPlaying ? dispatch(pauseSong()) : dispatch(playSong(1));
-        setIsActive(!isActive);
-    }
+        if (isPlaying) {
+            dispatch(pauseSong());
+        } else {
+          // If resuming playback, set currentTime to the current position
+            audioRef.current.currentTime = audioRef.current.currentTime || 0;
+            dispatch(playSong());
+        }
+    
+    };
 
     return (
-        <div className="controls-container">
+        <div className="controls-container"> 
+            <audio ref={audioRef} src={songfile} autoPlay={isPlaying}></audio>
             <svg id="shuffle" width="32" height="25" viewBox="0 0 32 28" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20.767 20.44a.81.81 0 00.49-.183l2.58-2.174c.316-.266.316-.681 0-.955l-2.58-2.183a.81.81 0 00-.49-.183c-.415 0-.673.258-.673.673v1.245h-1.162c-.739 0-1.195-.233-1.718-.847l-1.527-1.801 1.527-1.81c.54-.63.946-.847 1.677-.847h1.203v1.279c0 .407.258.664.673.664a.801.801 0 00.49-.174l2.58-2.175c.316-.266.316-.69 0-.955l-2.58-2.183a.761.761 0 00-.49-.183c-.415 0-.673.258-.673.665v1.386h-1.212c-1.228 0-1.992.34-2.863 1.386l-1.412 1.668-1.469-1.751c-.805-.946-1.569-1.303-2.747-1.303H8.896c-.53 0-.896.348-.896.838s.365.838.896.838h1.437c.697 0 1.162.225 1.685.847l1.519 1.801-1.52 1.81c-.53.623-.954.847-1.643.847H8.896c-.53 0-.896.348-.896.838s.365.838.896.838h1.536c1.179 0 1.901-.356 2.706-1.303l1.478-1.751 1.444 1.718c.822.98 1.627 1.336 2.822 1.336h1.212v1.412c0 .415.258.672.673.672z"/>
             </svg>
             <svg className="previous" width="32" height="25" viewBox="0 0 32 28" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.14 20.68c.365 0 .672-.107 1.038-.323l8.508-4.997c.623-.365.938-.814.938-1.37 0-.564-.307-.988-.938-1.361l-8.508-4.997c-.366-.216-.68-.324-1.046-.324-.73 0-1.337.556-1.337 1.569v4.773c-.108-.399-.406-.73-.904-1.021L7.382 7.632c-.357-.216-.672-.324-1.037-.324-.73 0-1.345.556-1.345 1.569v10.235c0 1.013.614 1.569 1.345 1.569.365 0 .68-.108 1.037-.324l8.509-4.997c.49-.29.796-.631.904-1.038v4.79c0 1.013.615 1.569 1.345 1.569z" fill-rule="nonzero"/>
             </svg>
-            {isActive ? (
-            // SVG for active state
-            <svg onClick={play} id="pause" height="28" width="32" viewBox="0 0 32 28" xmlns="http://www.w3.org/2000/svg">
+            {isPlaying ? (
+                // SVG for active state
+                <svg onClick={play} id="pause" height="28" width="32" viewBox="0 0 32 28" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.293 22.772c.955 0 1.436-.481 1.436-1.436V6.677c0-.98-.481-1.427-1.436-1.427h-2.457c-.954 0-1.436.473-1.436 1.427v14.66c-.008.954.473 1.435 1.436 1.435h2.457zm7.87 0c.954 0 1.427-.481 1.427-1.436V6.677c0-.98-.473-1.427-1.428-1.427h-2.465c-.955 0-1.428.473-1.428 1.427v14.66c0 .954.473 1.435 1.428 1.435h2.465z" fillRule="nonzero"/>
             </svg>
             ) : (
