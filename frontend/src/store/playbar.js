@@ -1,24 +1,31 @@
 
 export const PLAY = 'PLAY'
 export const PAUSE = 'PAUSE'
+export const SET_CURRENT_SONG = "SET_CURRENT_SONG"
 
-export const playSong = songId => {
+export const playSong = () => {
     return {
-        type: PLAY,
-        songId
+        type: PLAY
     }
 }
 
-export const pauseSong = songId => {
+export const pauseSong = () => {
     return {
         type: PAUSE,
-        songId
+    }
+}
+
+export const setCurrentSong = song => {
+    return {
+        type: SET_CURRENT_SONG, 
+        song
     }
 }
 
 
 const initialState = {
-    isPlaying: false 
+    isPlaying: false,
+    currentSong: null 
 }
 
 const playbarReducer = (state = initialState, action) => {
@@ -28,6 +35,8 @@ const playbarReducer = (state = initialState, action) => {
             return {...newState, isPlaying: true}
         case PAUSE: 
             return {...newState, isPlaying: false}
+        case SET_CURRENT_SONG:
+            return {...newState, isPlaying: true, currentSong: action.song }
         default: 
             return state;     
     }    

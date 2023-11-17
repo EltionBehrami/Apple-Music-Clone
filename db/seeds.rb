@@ -46,10 +46,11 @@ ApplicationRecord.transaction do
     })
 end
 
-    500.times do Song.create!({
+    50.times do Song.create!({
         title: Faker::Music::RockBand.song,
         artist_id: 1,
-        album_id: rand(1..20)
+        album_id: rand(1..20),
+        song_url: "/Users/eltionbehrami/apple_music_clone/frontend/src/01 The Adults Are Talking.mp3"
     })
 end 
 
