@@ -13,6 +13,7 @@ const TracksIndex = ( {album} ) => {
     const handleItemClick = (itemId) => {
         setActiveItemId(itemId === activeItemId ? null : itemId);
         dispatch( isPlaying ? pauseSong(itemId) : playSong(itemId))
+        
     };
 
     return (

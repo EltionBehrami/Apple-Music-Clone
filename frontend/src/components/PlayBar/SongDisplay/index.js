@@ -16,8 +16,8 @@ const SongDisplay = () => {
             </div>
             <div className="display-container">
                 <div id="display"> 
-                    <div>Consideration (feat. SZA)</div>
-                    <div className="song-display-artist">Rihanna - ANTI (Deluxe)</div>
+                    <span>Consideration (feat. SZA)</span>
+                    <span className="song-display-artist">Rihanna - ANTI (Deluxe)</span>
                 </div>
                 <div id="progress">ProgressBar</div>
             </div>

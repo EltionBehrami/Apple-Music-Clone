@@ -11,13 +11,10 @@ const AlbumShow = () => {
 
     const { albumId } = useParams(); 
     const album = useSelector(getAlbum(albumId))
-    const dispatch = useDispatch(); 
-    
-    debugger 
+    const dispatch = useDispatch();  
     
     useEffect(() => {
         dispatch(fetchAlbum(albumId))
-        debugger
     }, [dispatch, albumId])
 
     
