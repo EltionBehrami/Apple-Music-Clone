@@ -1,3 +1,5 @@
+require "open-uri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -6,9 +8,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ApplicationRecord.transaction do 
+# ApplicationRecord.transaction do 
     puts "Destroying tables..."
     User.destroy_all 
+    Song.destroy_all 
+    Album.destroy_all 
+    Artist.destroy_all 
 
     puts "Resetting primary keys..."
     ApplicationRecord.connection.reset_pk_sequence!('users')
@@ -46,15 +51,31 @@ ApplicationRecord.transaction do
     })
 end
 
-    50.times do Song.create!({
-        title: Faker::Music::RockBand.song,
-        artist_id: 1,
-        album_id: rand(1..20),
-        song_url: "/Users/eltionbehrami/apple_music_clone/frontend/src/01 The Adults Are Talking.mp3"
-    })
-end 
+#     50.times do Song.create!({
+#         title: Faker::Music::RockBand.song,
+#         artist_id: 1,
+#         album_id: rand(1..20),
+#         song_url: "/Users/eltionbehrami/apple_music_clone/frontend/src/01 The Adults Are Talking.mp3"
+#     })
+# end 
+
+Adults = Song.create!({
+    title: "The Adults Are Talking",
+    artist_id: 1, 
+    album_id: 1, 
+})
+
+Bad_Decisions = Song.create!({
+    title: "Bad Decisions",
+    artist_id: 1, 
+    album_id: 1, 
+})
+
+Adults.mp3.attach(io: URI.open("https://cherrymusic-seeds.s3.amazonaws.com/01+The+Adults+Are+Talking.mp3"), filename: "the_adults_are_talking_mp3" )
+
+Bad_Decisions.mp3.attach(io: URI.open("https://cherrymusic-seeds.s3.amazonaws.com/04+Bad+Decisions.m4a"), filename: "bad_decisions_mp3" )
 
 
     puts "Done!"
 
-end 
+# end 
