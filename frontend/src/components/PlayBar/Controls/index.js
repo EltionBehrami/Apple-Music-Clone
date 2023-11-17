@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 const Controls = ( { audioRef }) => {
     const dispatch = useDispatch(); 
     const isPlaying = useSelector(state => state.playbar.isPlaying)
-    // const audio = currentSong ? currentSong.song_url : null
+    
     
 
 

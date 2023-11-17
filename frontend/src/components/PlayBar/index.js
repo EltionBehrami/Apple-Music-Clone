@@ -16,8 +16,10 @@ const PlayBar = () => {
     const audioRef = useRef(null)
     const isPlaying = useSelector(state => state.playbar.isPlaying)
     const [volume, setVolume] = useState(0)
+    const currentSong = useSelector(state => state.playbar.currentSong)
 
-    // const currentSong = useSelector(state => state.playbar.currentSong)
+    debugger
+
 
 
     const handleVolume = e => {
@@ -53,7 +55,7 @@ const PlayBar = () => {
 
     return (
             <div className="playbar">
-                <audio ref={audioRef} src={songfile} autoPlay={isPlaying}></audio>
+                <audio ref={audioRef} src={currentSong?.songUrl} autoPlay={isPlaying}></audio>
                 <Controls audioRef={audioRef}/>
                 <SongDisplay />
                 <div className="volume-container">
