@@ -1,4 +1,12 @@
 .volume-container {
-    border: aqua 1px solid;
+    /* border: aqua 1px solid; */
     margin-right: auto;
+    margin-left: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#volume-icon {
+    fill: aqua;
 }

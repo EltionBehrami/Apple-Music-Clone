@@ -26,7 +26,6 @@ function App() {
           <Route exact path="/albums/:albumId">
             <AlbumShow />
           </Route>
-    
         </Switch>
       </div>
     </div>

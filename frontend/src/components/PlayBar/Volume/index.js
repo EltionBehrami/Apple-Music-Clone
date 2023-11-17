@@ -1,7 +1,9 @@
 import "./Volume.css"
 const Volume = () => {
     return (
-        <div className="volume-container">Hello from Volume</div>
+        <div className="volume-container">
+            VOLUME BAR      
+        </div>
     )
 }
 
