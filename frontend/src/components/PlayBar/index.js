@@ -4,13 +4,39 @@ import { openModal } from "../../store/modal";
 import "./playbar.css"
 import SongDisplay from "./SongDisplay";
 import Controls from "./Controls";
-import Volume from "./Volume";
+import { useEffect, useRef, useState } from "react";
+import songfile from "/Users/eltionbehrami/apple_music_clone/frontend/src/01 The Adults Are Talking.mp3"
+
 
 
 
 const PlayBar = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
+    const audioRef = useRef(null)
+    const isPlaying = useSelector(state => state.playbar.isPlaying)
+    const [volume, setVolume] = useState(0)
+
+    // const currentSong = useSelector(state => state.playbar.currentSong)
+
+
+    const handleVolume = e => {
+        const newVolume = parseFloat(e.target.value);
+        setVolume(newVolume);
+        if (audioRef.current) {
+            audioRef.current.volume = newVolume;
+        }
+    };
+
+    useEffect(() => {
+        if (audioRef.current) {
+            if (isPlaying) {
+            audioRef.current.play();
+            } else {
+            audioRef.current.pause();
+            }
+        }
+    }, [isPlaying]);
 
     let sessionLinks; 
     if (sessionUser) {
@@ -25,14 +51,14 @@ const PlayBar = () => {
         );
     } 
 
-    
-
-
     return (
             <div className="playbar">
-                <Controls />
+                <audio ref={audioRef} src={songfile} autoPlay={isPlaying}></audio>
+                <Controls audioRef={audioRef}/>
                 <SongDisplay />
-                <Volume />
+                <div className="volume-container">
+                    <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume}></input>
+                </div>
                 <li className="session-links">
                 {sessionLinks}
                 </li>    
