@@ -26,6 +26,17 @@ export const getAlbum = albumId => state => {
 }
 
 
+export const getAlbumSongs = albumId => state => {
+    const songs = [];
+    Object.values(state.songs).forEach(song => {
+        if (song.albumId === parseInt(albumId)){
+            songs.push(song)
+        }
+    })
+    return songs;
+}
+
+
 export const fetchAlbums = () => async dispatch => {
     const response = await csrfFetch("/api/albums")
     if (response.ok){
@@ -38,7 +49,7 @@ export const fetchAlbum = (albumId) => async dispatch => {
     const response = await csrfFetch(`/api/albums/${albumId}`)
     if (response.ok){
         const data = await response.json();
-        dispatch(receiveAlbum(data.album))
+        dispatch(receiveAlbum(data))
     }
 }
 
@@ -48,13 +59,13 @@ const albumsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_ALBUMS: 
             return {...action.albums}
-        case RECEIVE_ALBUM:
-            debugger
-            return {...newState, [action.album.id]: action.album}   
-            
+        case RECEIVE_ALBUM:  
+            return {...newState, [action.album.album.id]: action.album.album}   
         default:
-            return state    
+            return newState    
     }
 }
+
+
 
 export default albumsReducer

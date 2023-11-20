@@ -9,13 +9,6 @@ const AlbumIndexItem = ( { album } ) => {
 
     const artistId  = album.artistId
     const artist = useSelector(getArtist(artistId))
-    debugger
-
-
-
-    
-
-
 
     return (
         <>

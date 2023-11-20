@@ -5,21 +5,48 @@ import "./playbar.css"
 import SongDisplay from "./SongDisplay";
 import Controls from "./Controls";
 import { useEffect, useRef, useState } from "react";
-import songfile from "/Users/eltionbehrami/apple_music_clone/frontend/src/01 The Adults Are Talking.mp3"
+import { getSong } from "../../store/songs";
 
 
 
 
 const PlayBar = () => {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user)
-    const audioRef = useRef(null)
-    const isPlaying = useSelector(state => state.playbar.isPlaying)
-    const [volume, setVolume] = useState(0)
-    const currentSong = useSelector(state => state.playbar.currentSong)
+    const sessionUser = useSelector(state => state.session.user);
+    const audioRef = useRef(null);
+    const progressBarRef = useRef();
+    const [progress, setProgress] = useState(0)
+    const [duration, setDuration] = useState(0)
+    const isPlaying = useSelector(state => state.playbar.isPlaying);
+    const [volume, setVolume] = useState(.5);
 
-    debugger
 
+    const queue = useSelector(state => state.playbar.queue);
+    const songId = useSelector(state => state.playbar.currentSong);
+    const [currentSongIndex, setCurrentSongIndex] = useState(0);
+
+    
+    const currentSongId = queue[currentSongIndex];
+    
+
+    const currentSong = useSelector(getSong(currentSongId));
+
+    const onLoadedMetadata = () => {
+    const seconds = audioRef.current.duration;
+    setDuration(seconds);
+    progressBarRef.current.max = seconds;
+    };
+
+
+
+    useEffect(() => {
+        if (queue.length > 0) {
+            setCurrentSongIndex((queue.indexOf(songId)))
+        } else {
+            setCurrentSongIndex(0)
+        }
+    }, [queue, songId]);
+    
 
 
     const handleVolume = e => {
@@ -55,11 +82,11 @@ const PlayBar = () => {
 
     return (
             <div className="playbar">
-                <audio ref={audioRef} src={currentSong?.songUrl} autoPlay={isPlaying}></audio>
-                <Controls audioRef={audioRef}/>
-                <SongDisplay />
+                <audio ref={audioRef} src={currentSong?.songUrl} autoPlay={isPlaying} onLoadedMetadata={onLoadedMetadata}></audio>
+                <Controls audioRef={audioRef} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} queue={queue} currentSong={songId}/>
+                <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} duration={duration} setDuration={setDuration}/>
                 <div className="volume-container">
-                    <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume}></input>
+                    <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume} setDuration={setDuration}></input>
                 </div>
                 <li className="session-links">
                 {sessionLinks}

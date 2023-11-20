@@ -1,4 +1,6 @@
+import { RECEIVE_ALBUM } from "./albums";
 import csrfFetch from "./csrf";
+import { SET_CURRENT_SONG } from "./playbar";
 
 export const RECEIVE_SONGS  = "songs/RECEIVE_SONGS"
 
@@ -50,6 +52,10 @@ const songsReducer = (state = {}, action) => {
             return {...action.songs}
         case RECEIVE_SONG:
             return {...newState, [action.song.id]: action.song} 
+        case RECEIVE_ALBUM: 
+            return {...newState, ...action.album.albumSongs }
+        case SET_CURRENT_SONG:
+            return {...newState, ...action.song}    
         default: 
             return state;       
     }
