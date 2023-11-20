@@ -4,8 +4,9 @@ import { openModal } from "../../store/modal";
 import "./playbar.css"
 import SongDisplay from "./SongDisplay";
 import Controls from "./Controls";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getSong } from "../../store/songs";
+
 
 
 
@@ -15,6 +16,7 @@ const PlayBar = () => {
     const sessionUser = useSelector(state => state.session.user);
     const audioRef = useRef(null);
     const progressBarRef = useRef();
+    const playAnimationRef = useRef();
     const [progress, setProgress] = useState(0)
     const [duration, setDuration] = useState(0)
     const isPlaying = useSelector(state => state.playbar.isPlaying);
@@ -31,11 +33,26 @@ const PlayBar = () => {
 
     const currentSong = useSelector(getSong(currentSongId));
 
+    
+
     const onLoadedMetadata = () => {
     const seconds = audioRef.current.duration;
     setDuration(seconds);
     progressBarRef.current.max = seconds;
     };
+
+    const repeat = useCallback(() => {
+        const currentTime = audioRef.current.currentTime;
+        setProgress(currentTime);
+        progressBarRef.current.value = currentTime;
+        progressBarRef.current.style.setProperty(
+          '--range-progress',
+          `${(progressBarRef.current.value / duration) * 100}%`
+        );
+    
+        playAnimationRef.current = requestAnimationFrame(repeat);
+      }, [audioRef, duration, progressBarRef, setProgress]);
+  
 
 
 
@@ -61,11 +78,13 @@ const PlayBar = () => {
         if (audioRef.current) {
             if (isPlaying) {
             audioRef.current.play();
+            playAnimationRef.current = requestAnimationFrame(repeat);
             } else {
             audioRef.current.pause();
+            cancelAnimationFrame(playAnimationRef.current);
             }
         }
-    }, [isPlaying]);
+    }, [isPlaying, audioRef, repeat]);
 
     let sessionLinks; 
     if (sessionUser) {
@@ -83,8 +102,8 @@ const PlayBar = () => {
     return (
             <div className="playbar">
                 <audio ref={audioRef} src={currentSong?.songUrl} autoPlay={isPlaying} onLoadedMetadata={onLoadedMetadata}></audio>
-                <Controls audioRef={audioRef} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} queue={queue} currentSong={songId}/>
-                <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} duration={duration} setDuration={setDuration}/>
+                <Controls audioRef={audioRef} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} queue={queue} currentSong={songId} progressBarRef={progressBarRef} duration={duration} setProgress={setProgress}/>
+                <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} setProgress={setProgress} duration={duration} setDuration={setDuration}/>
                 <div className="volume-container">
                     <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume} setDuration={setDuration}></input>
                 </div>
