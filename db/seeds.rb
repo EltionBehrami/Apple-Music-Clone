@@ -62,18 +62,27 @@ end
 Adults = Song.create!({
     title: "The Adults Are Talking",
     artist_id: 1, 
-    album_id: 1, 
+    album_id: 1
 })
 
 Bad_Decisions = Song.create!({
     title: "Bad Decisions",
     artist_id: 1, 
-    album_id: 1, 
+    album_id: 1
+})
+
+Ode_To_The_Mets = Song.create!({
+    title: "Ode to the Mets",
+    artist_id: 1, 
+    album_id: 2
 })
 
 Adults.mp3.attach(io: URI.open("https://cherrymusic-seeds.s3.amazonaws.com/01+The+Adults+Are+Talking.mp3"), filename: "the_adults_are_talking_mp3" )
 
 Bad_Decisions.mp3.attach(io: URI.open("https://cherrymusic-seeds.s3.amazonaws.com/04+Bad+Decisions.m4a"), filename: "bad_decisions_mp3" )
+
+Ode_To_The_Mets.mp3.attach(io: URI.open("https://cherrymusic-seeds.s3.amazonaws.com/09+Ode+to+the+Mets.m4a"), filename: "ode_to_the_mets_mp3" )
+
 
 
     puts "Done!"
