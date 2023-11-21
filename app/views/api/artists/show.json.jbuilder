@@ -1,4 +1,4 @@
 
 json.artist do 
-    json.extract! @artists, :id, :name, :bio, :created_at, :updated_at 
+    json.extract! @artist, :id, :name, :bio, :created_at, :updated_at 
 end 

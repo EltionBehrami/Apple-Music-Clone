@@ -6,6 +6,7 @@ import albumsReducer from "./albums";
 import artistsReducer from "./artist";
 import songsReducer from "./songs";
 import playbarReducer from "./playbar";
+import playlistReducer from "./playlists";
 
 
 const rootReducer = combineReducers({
@@ -14,7 +15,9 @@ const rootReducer = combineReducers({
     albums: albumsReducer,
     artists: artistsReducer,
     songs: songsReducer,
-    playbar: playbarReducer
+    playlists: playlistReducer,
+    playbar: playbarReducer,
+    
 });
 
 let enhancer;

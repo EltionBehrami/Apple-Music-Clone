@@ -12,13 +12,12 @@ const AlbumShow = () => {
     const songs = useSelector(getAlbumSongs(albumId))
     const dispatch = useDispatch();  
 
-    
+
     useEffect(() => {
             dispatch(fetchAlbum(albumId))
     }, [dispatch, albumId])
 
     
-
     return (
         <>
             <div className="album-show-container">

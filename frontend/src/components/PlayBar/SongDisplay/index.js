@@ -1,17 +1,16 @@
 import { useSelector } from "react-redux";
 import "./SongDisplay.css"
+import { getSong } from "../../../store/songs";
 import ProgressBar from "./ProgressBar";
-const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration}) => {
+
+
+const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration, currentSong}) => {
+
+    const songId = useSelector(state => state.playbar.currentSong)
+    const song = useSelector(getSong(songId))
 
 
     const isPlaying = useSelector(state => state.playbar.isPlaying);
-
-
-    
-
-
-
-
 
 
     return (
@@ -22,13 +21,11 @@ const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration
             </div>
             <div className="display-container">
                 <div id="display"> 
-                    <span>Consideration (feat. SZA)</span>
-                    <span className="song-display-artist">Rihanna - ANTI (Deluxe)</span>
+                    <span>{song?.title}</span>
+                    <span className="song-display-artist">{song?.artistName}</span>
                 </div>
                 <ProgressBar progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} duration={duration}/>
             </div>
-
-            
         </div>
     )
 }

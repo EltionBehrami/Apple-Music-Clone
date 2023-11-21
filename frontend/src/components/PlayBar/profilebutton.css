@@ -14,7 +14,7 @@
 .dropdown {
     /* border: greenyellow 1px solid; */
     position: absolute;
-    top: 40px;
+    top: 42px;
     right: 25px;
     color: white;
     width: 184px;
@@ -29,9 +29,9 @@
     background-color: #1e1e1e;
     font-family: SF-Pro Text-Light;
     color: #f1392f;
-    border-radius: 10px; 
+    border-radius: 5px; 
     border: rgb(70, 70, 70) solid 1px;
-    font-size: medium;
+    font-size: small;
 }
 
 #logout-button:hover {

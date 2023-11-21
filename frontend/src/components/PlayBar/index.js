@@ -7,10 +7,6 @@ import Controls from "./Controls";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getSong } from "../../store/songs";
 
-
-
-
-
 const PlayBar = () => {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -22,15 +18,12 @@ const PlayBar = () => {
     const isPlaying = useSelector(state => state.playbar.isPlaying);
     const [volume, setVolume] = useState(.5);
 
+    
 
     const queue = useSelector(state => state.playbar.queue);
     const songId = useSelector(state => state.playbar.currentSong);
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
-
-    
     const currentSongId = queue[currentSongIndex];
-    
-
     const currentSong = useSelector(getSong(currentSongId));
 
     
@@ -46,14 +39,12 @@ const PlayBar = () => {
         setProgress(currentTime);
         progressBarRef.current.value = currentTime;
         progressBarRef.current.style.setProperty(
-          '--range-progress',
+            '--range-progress',
           `${(progressBarRef.current.value / duration) * 100}%`
         );
     
         playAnimationRef.current = requestAnimationFrame(repeat);
-      }, [audioRef, duration, progressBarRef, setProgress]);
-  
-
+    }, [audioRef, duration, progressBarRef, setProgress]);
 
 
     useEffect(() => {
@@ -64,8 +55,6 @@ const PlayBar = () => {
         }
     }, [queue, songId]);
     
-
-
     const handleVolume = e => {
         const newVolume = parseFloat(e.target.value);
         setVolume(newVolume);
@@ -103,7 +92,7 @@ const PlayBar = () => {
             <div className="playbar">
                 <audio ref={audioRef} src={currentSong?.songUrl} autoPlay={isPlaying} onLoadedMetadata={onLoadedMetadata}></audio>
                 <Controls audioRef={audioRef} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} queue={queue} currentSong={songId} progressBarRef={progressBarRef} duration={duration} setProgress={setProgress}/>
-                <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} setProgress={setProgress} duration={duration} setDuration={setDuration}/>
+                <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} setProgress={setProgress} duration={duration} setDuration={setDuration} currentSong={currentSong}/>
                 <div className="volume-container">
                     <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume} setDuration={setDuration}></input>
                 </div>

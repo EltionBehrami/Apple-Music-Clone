@@ -12,7 +12,7 @@ const receiveArtists = artists => {
 
 const receiveArtist = artist => {
     return {
-        type: RECEIVE_ARTISTS, 
+        type: RECEIVE_ARTIST, 
         artist
     }
 }

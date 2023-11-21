@@ -77,6 +77,12 @@ Ode_To_The_Mets = Song.create!({
     album_id: 2
 })
 
+Playlist.create!({
+    user_id: 1, 
+    title: "test-playlist",
+    description: "test description"
+})
+
 Adults.mp3.attach(io: URI.open("https://cherrymusic-seeds.s3.amazonaws.com/01+The+Adults+Are+Talking.mp3"), filename: "the_adults_are_talking_mp3" )
 
 Bad_Decisions.mp3.attach(io: URI.open("https://cherrymusic-seeds.s3.amazonaws.com/04+Bad+Decisions.m4a"), filename: "bad_decisions_mp3" )
