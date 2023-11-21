@@ -3,6 +3,7 @@ import SignupFormPage from "../SessionForms/SignupFormPage";
 import { closeModal } from "../../store/modal";
 import "./modal.css"
 import { useDispatch, useSelector } from "react-redux";
+import PlaylistForm from "../Playlists/PlaylistForm";
 
 
 const Modal = () => {
@@ -14,6 +15,8 @@ const Modal = () => {
     }
 
     let component;
+    let modalClass = "modal-child"
+
     switch (modal) {
         case 'login':
             component = <LoginFormPage modal={"null"}/>;
@@ -21,13 +24,17 @@ const Modal = () => {
         case 'signup':
             component = <SignupFormPage  modal={"null"} />;
             break;
+        case 'create_playlist':
+            component = <PlaylistForm  modal={"null"}/>
+            modalClass = "small-modal-child"
+            break;
         default:
             return null;
     }
 
     return (
         <div className="modal-background" onClick={() => dispatch(closeModal("null"))}>
-            <div className="modal-child" onClick={e => e.stopPropagation()}>
+            <div className={modalClass} onClick={e => e.stopPropagation()}>
                 { component }
             </div>
 
