@@ -1,0 +1,37 @@
+
+
+
+
+
+
+
+
+.track-dropdown {
+    /* border: greenyellow 1px solid; */
+    position: absolute;
+    right: 5px;
+    /* bottom: 430px; */
+    color: white;
+    width: 184px;
+}
+
+#track-button:hover {
+    cursor: pointer;
+}
+
+#create-playlist-button {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    width: 100%;
+    border-style: none;
+    background-color: #26262667;
+    backdrop-filter: blur(20px);
+    font-family: SF-Pro Text-Light;
+    color: #efeeeeeb;
+    border-radius: 5px; 
+    border: rgb(70, 70, 70) solid 1px;
+    font-size: smaller;
+    position: absolute;
+    right: 75px;
+}

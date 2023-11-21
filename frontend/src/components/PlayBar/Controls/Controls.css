@@ -1,0 +1,62 @@
+.controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: blue 1px solid; */
+    margin-left: 8%;
+}
+
+#shuffle {
+    fill: #b3b3b3;
+}
+
+#shuffle:hover {
+    fill: #eeeeee;
+    cursor: pointer;
+}
+
+.previous {
+    fill:  #b3b3b3;
+    transform: scale(-1, -1);
+}
+
+.previous:hover {
+    fill: #eeeeee;
+    transform: scale(-1, -1);
+    cursor: pointer;
+}
+
+.next {
+    fill:  #b3b3b3;
+}
+
+.next:hover {
+    fill: #eeeeee;
+    cursor: pointer;
+}
+
+#play {
+    fill:  #b3b3b3;
+}
+#play:hover {
+    fill: #eeeeee;
+    cursor: pointer;
+}
+
+#pause {
+    fill:  #b3b3b3;
+}
+#pause:hover {
+    fill: #eeeeee;
+    cursor: pointer;
+}
+
+.order {
+    fill:  #b3b3b3;
+}
+.order:hover {
+    fill: #eeeeee;
+    cursor: pointer;
+}
+
+

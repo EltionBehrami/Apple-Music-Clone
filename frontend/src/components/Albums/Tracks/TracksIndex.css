@@ -1,0 +1,8 @@
+.tracks-index-container li.even {
+    background-color: #252525;
+    border-radius: 8px;
+}
+
+.tracks-index-container {
+    margin-right: 50px;
+}

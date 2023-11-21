@@ -1,0 +1,112 @@
+.playlist-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-evenly;
+    /* border: blue solid 1px; */
+    height: 100%;
+}
+
+.playlist-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    /* border: greenyellow solid 1px; */
+    height: 100%;
+    position: relative;
+    padding-bottom: 90px;
+    
+}
+
+#top-form-div {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px pink solid; */
+    width: 88%;
+    height: 100%; 
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.new-playlist-header {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    /* border: yellow 1px solid; */
+    color: #efefef;
+    font-weight: 600;
+    font-size: 16px;
+    
+}
+
+#create-button-container{
+    border-top: #3b3a3b solid 1px;
+    display: flex;
+    justify-content: end;
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    height: 10%;
+    bottom: 0px;
+}
+
+#playlist-title-input-container{
+    /* border: cyan 1px solid; */
+    width: 100%;
+}
+
+#create-button {
+    background-color: #d60117;
+    border-radius: 5px;
+    color: white;
+    font-family: SF-Pro Text-Light;
+    padding: 5px;
+    font-size: small;
+    width: 80px;
+    height: 27px;
+    border-style: none;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+#create-button:hover {
+    cursor: pointer;
+}
+
+#playlist-title-input {
+    background-color: #3b3b3b;
+    width: 98.3%;
+    height: 25px;
+    /* padding: 1%; */
+    border: 1px solid rgba(128, 128, 128, 0.554);
+    border-radius: 3px;
+    font-size: small;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#playlist-description-input {
+    background-color: #3b3b3b;
+    width: 98.3%;
+    height: 60px;
+    border: 1px solid  rgba(128, 128, 128, 0.554);
+    border-radius: 3px;
+    font-size: small;
+    font-family: SF-Pro Text-Light;
+    color: white;
+    resize: none;
+}
+
+#playlist-description-input::placeholder{
+    color: #aaaaaa
+}
+
+#playlist-title-input::placeholder{
+    color: #aaaaaa
+}

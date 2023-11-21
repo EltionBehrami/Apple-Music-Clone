@@ -2,10 +2,22 @@ import { createStore, combineReducers, applyMiddleware, compose} from "redux"
 import thunk from "redux-thunk"
 import sessionReducer from "./session";
 import modalReducer from "./modal";
+import albumsReducer from "./albums";
+import artistsReducer from "./artist";
+import songsReducer from "./songs";
+import playbarReducer from "./playbar";
+import playlistReducer from "./playlists";
+
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    modal: modalReducer
+    modal: modalReducer,
+    albums: albumsReducer,
+    artists: artistsReducer,
+    songs: songsReducer,
+    playlists: playlistReducer,
+    playbar: playbarReducer,
+    
 });
 
 let enhancer;

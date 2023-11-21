@@ -3,22 +3,22 @@ import "./nav.css"
 
 const Navigation = () => {
 
-
-
-
-
     return (
         <>
-            <div className="nav-container">
-                <NavLink to="/">Cherry Music</NavLink>
-                <ul className="library-links">
-                    <li><NavLink to="/artists">Artists</NavLink></li>
-                    <li><NavLink to="/albums">Albums</NavLink></li>
-                    <li><NavLink to="/songs">Songs</NavLink></li>
-                </ul>
+            <div className="left-container">
+                    <NavLink id="home" to="/">Cherry Music</NavLink>
+                    <ul className="library-links">
+                        <button id="album-link"><NavLink to="/albums" className="inactive-link" activeClassName="active-albums-link"> Albums</NavLink></button>
+                        <button id="song-link"><NavLink to="/songs" className="inactive-link" activeClassName="active-songs-link"> Songs</NavLink></button>
+                    </ul>
+                    <ul className="playlist-links">
+                        <button id="playlists-link"><NavLink to="/playlists" className="inactive-link" activeClassName="active-playlists-link">Playlists</NavLink></button>
+                    </ul>
             </div>
         </>
     )
 }
 
 export default Navigation;
+
+

@@ -1,6 +1,0 @@
-import { useDispatch } from "react-redux";
-
-const dispatch = useDispatch();
-const errors = useState(state => state.errors.session);
-
-dispatch
