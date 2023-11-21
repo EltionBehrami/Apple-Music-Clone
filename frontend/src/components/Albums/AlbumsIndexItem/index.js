@@ -1,15 +1,6 @@
-import { fetchArtists, getArtist } from "../../../store/artist";
 import "./AlbumsIndexItem.css"
-import { useSelector } from "react-redux"
-import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { useEffect } from "react";
-
 
 const AlbumIndexItem = ( { album } ) => {
-
-    const artistId  = album.artistId
-    const artist = useSelector(getArtist(artistId))
-
     return (
         <>
             <div className="album-index-item">

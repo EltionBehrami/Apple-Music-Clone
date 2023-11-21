@@ -5,7 +5,6 @@ import AlbumIndexItem from "../AlbumsIndexItem";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./AlbumsIndex.css"
 
-
 const AlbumsIndex = () => {
     const dispatch = useDispatch();
     const albums = useSelector(getAlbums);
@@ -28,8 +27,6 @@ const AlbumsIndex = () => {
                 </div>
         )}
         </>
-
-
     )
 }
 

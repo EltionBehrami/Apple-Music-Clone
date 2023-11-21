@@ -1,6 +1,6 @@
 import { RECEIVE_ALBUM } from "./albums";
-import csrfFetch from "./csrf";
 import { SET_CURRENT_SONG } from "./playbar";
+import csrfFetch from "./csrf";
 
 export const RECEIVE_SONGS  = "songs/RECEIVE_SONGS"
 
@@ -15,7 +15,7 @@ const receiveSongs = songs => {
 
 const receiveSong = song => {
     return {
-        type: RECEIVE_SONGS,    
+        type: RECEIVE_SONG,    
         song
     }
 }
@@ -24,7 +24,7 @@ export const getSong = songId => state => {
     return state?.songs ? state.songs[songId] : null;
 }
 
-export const getSongs = songId => state => {
+export const getSongs = state => {
     return state?.songs ? Object.values(state.songs) : [];
 }
 
@@ -40,7 +40,7 @@ export const fetchSong = songId => async dispatch => {
     const response = await csrfFetch(`/api/songs/${songId}`)
     if (response.ok){
         const data = await response.json(); 
-        dispatch(receiveSongs(data))
+        dispatch(receiveSong(data))
     }
 }
 
@@ -49,7 +49,7 @@ const songsReducer = (state = {}, action) => {
     const newState = {...state}
     switch (action.type) {
         case RECEIVE_SONGS:
-            return {...action.songs}
+            return {...newState, ...action.songs}
         case RECEIVE_SONG:
             return {...newState, [action.song.id]: action.song} 
         case RECEIVE_ALBUM: 
@@ -61,4 +61,4 @@ const songsReducer = (state = {}, action) => {
     }
 }
 
-export default songsReducer
+export default songsReducer;

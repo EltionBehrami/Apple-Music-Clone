@@ -1,26 +1,32 @@
-import TracksIndexItem from "./TracksIndexItem"
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setCurrentSong } from "../../../store/playbar";
-import { setQueue } from "../../../store/playbar";
-import "./TracksIndex.css"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSongs, getSongs } from "../../../store/songs";
+import { setCurrentSong, setSongQueue } from "../../../store/playbar";
+import TracksIndexItem from "../../Albums/Tracks/TracksIndexItem";
 
-const TracksIndex = ( {album, songs} ) => {
 
+import "./SongsIndex.css"
+
+const SongsIndex = () => {
     const [activeItemId, setActiveItemId] = useState(null)
     const dispatch = useDispatch();
-    
+    const songs = useSelector(getSongs)
+    const currentUser = (state => state.session.user)
 
     const handleItemClick = (song) => {
         setActiveItemId(song.id === activeItemId ? null : song.id);
         dispatch(setCurrentSong(song.id))
-        dispatch(setQueue(album))
+        dispatch(setSongQueue(song.id))
     };
+
+    useEffect(() => {
+        dispatch(fetchSongs());
+    }, [dispatch])
 
     
 
     return (
-        <ul className="tracks-index-container ">
+        <ul className="songs-index-container ">
             {Object.values(songs).map((song, index) => 
             <li onClick={() => handleItemClick(song)} className={index % 2 === 0 ? 'even' : 'odd'}>
                 <TracksIndexItem 
@@ -33,6 +39,4 @@ const TracksIndex = ( {album, songs} ) => {
     )
 }
 
-export default TracksIndex 
-
-
+export default SongsIndex;
