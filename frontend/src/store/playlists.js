@@ -26,7 +26,7 @@ const removePlaylist = (playlistId) => {
 }
 
 export const getPlaylists = state => {
-    return state?.playlists ? Object.values(state.playlists) : []; 
+    return state?.playlists ? state.playlists : []; 
 }
 
 export const getPlaylist = playlistId => state => {
@@ -84,10 +84,9 @@ const playlistReducer = (state = {}, action) => {
     const newState = {...state}; 
     switch (action.type) {
         case RECEIVE_PLAYLISTS: 
-            return {...newState, ...action.playlists};
+            return {...action.playlists};
         case RECEIVE_PLAYLIST: 
             return {...newState, [action.playlist.id]: action.playlist}
-           
         default: 
             return state;
     }

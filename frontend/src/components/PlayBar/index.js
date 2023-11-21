@@ -1,11 +1,11 @@
 import ProfileButton from "./ProfileButton";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../store/modal";
-import "./playbar.css"
 import SongDisplay from "./SongDisplay";
 import Controls from "./Controls";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getSong } from "../../store/songs";
+import "./playbar.css"
 
 const PlayBar = () => {
     const dispatch = useDispatch();
@@ -17,8 +17,6 @@ const PlayBar = () => {
     const [duration, setDuration] = useState(0)
     const isPlaying = useSelector(state => state.playbar.isPlaying);
     const [volume, setVolume] = useState(.5);
-
-    
 
     const queue = useSelector(state => state.playbar.queue);
     const songId = useSelector(state => state.playbar.currentSong);

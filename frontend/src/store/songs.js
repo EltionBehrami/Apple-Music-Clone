@@ -25,7 +25,7 @@ export const getSong = songId => state => {
 }
 
 export const getSongs = state => {
-    return state?.songs ? Object.values(state.songs) : [];
+    return state?.songs ? state.songs : [];
 }
 
 export const fetchSongs = () => async dispatch => {
