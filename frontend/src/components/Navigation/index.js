@@ -14,7 +14,7 @@ const Navigation = () => {
 
     useEffect(() => {
         dispatch(fetchPlaylists())
-    }, [dispatch])
+    }, [])
 
     debugger
 
