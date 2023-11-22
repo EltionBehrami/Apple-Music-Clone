@@ -7,26 +7,24 @@ const ProgressBar = ({progressBarRef, audioRef, progress, duration, setDuration}
         audioRef.current.currentTime = progressBarRef.current.value
     }
 
-    const formatTime = (time) => {
-        if (time && !isNaN(time)) {
-        const minutes = Math.floor(time / 60);
-        const formatMinutes =
-            minutes < 10 ? `0${minutes}` : `${minutes}`;
-        const seconds = Math.floor(time % 60);
-        const formatSeconds =
-            seconds < 10 ? `0${seconds}` : `${seconds}`;
-        return `${formatMinutes}:${formatSeconds}`;
+    function formatDuration(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.round(seconds % 60);
+        
+        if (minutes < 10) {
+            return `${minutes}:${remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds}`;
+        } else {
+            return `${minutes}:${remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds}`;
         }
-        return '00:00';
-    };
+    }
 
 
 
     return (
         <div className="progress-bar">
-            <span className="time-current">{formatTime(progress)}</span>
-            <input id="progress" type="range" ref={progressBarRef} onChange={handleProgress} />
-            <span className="time">{formatTime(duration)}</span>
+            <span className="time-current">{formatDuration(progress)}</span>
+            <input id="progress" type="range" ref={progressBarRef} value={0} onChange={handleProgress} />
+            <span className="time">{formatDuration(duration)}</span>
         </div>
     )
 }

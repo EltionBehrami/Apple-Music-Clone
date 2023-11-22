@@ -1,8 +1,10 @@
 class Api::PlaylistsController < ApplicationController
     wrap_parameters include: Playlist.attribute_names + ['userId', 'title']
 
+    before_action :require_logged_in
+
     def index 
-        @playlists = Playlist.all
+        @playlists = current_user.playlists
         render :index 
     end 
 
@@ -24,8 +26,8 @@ class Api::PlaylistsController < ApplicationController
 
 
     def update 
-        @playlist = Playlist.find(params[:id])
-        if @playlist.update
+        @playlist = Playlist.find_by(id: params[:id])
+        if @playlist.update(playlist_params)
             render :show 
         else 
             render json: @playlist.errors.full_messages, status: 422
@@ -33,6 +35,8 @@ class Api::PlaylistsController < ApplicationController
     end 
 
     def destroy 
+        @playlist = Playlist.find_by(id: params[:id])
+        @playlist.destroy
     end 
 
     private 

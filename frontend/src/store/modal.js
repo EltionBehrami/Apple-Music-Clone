@@ -1,5 +1,6 @@
 export const OPEN_MODAL = 'OPEN_MODAL'; 
 export const CLOSE_MODAL = 'CLOSE_MODAL'; 
+export const PLAYLIST_ID = 'PLAYLIST_ID'; 
 
 export const openModal = modal => {
     return{
@@ -16,6 +17,13 @@ export const closeModal = modal => {
     }
 }
 
+export const setPlaylistId = playlist => {
+    return{
+        type: PLAYLIST_ID, 
+        playlist
+    }
+}
+
 
 const modalReducer = (state = null, action) => {
     const newState = {...state}
@@ -26,6 +34,8 @@ const modalReducer = (state = null, action) => {
         case CLOSE_MODAL: 
             newState["modal"] = action.modal;
             return newState; 
+        case PLAYLIST_ID:
+            return { ...newState, playlistId: action.playlist.id };
         default: 
             return state;             
     }

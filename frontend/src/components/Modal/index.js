@@ -4,11 +4,14 @@ import { closeModal } from "../../store/modal";
 import "./modal.css"
 import { useDispatch, useSelector } from "react-redux";
 import PlaylistForm from "../Playlists/PlaylistForm";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+
 
 
 const Modal = () => {
     const dispatch = useDispatch();
     const modal = useSelector(state => state.modal?.modal);
+    const playlistId = useSelector(state => state.modal?.playlistId);
 
     if (!modal) {
         return null
@@ -28,6 +31,11 @@ const Modal = () => {
             component = <PlaylistForm  modal={"null"}/>
             modalClass = "small-modal-child"
             break;
+        case 'edit_playlist': 
+            component = <PlaylistForm playlistId={playlistId}  modal={"null"}/>
+            modalClass = "small-modal-child"
+        break;
+
         default:
             return null;
     }

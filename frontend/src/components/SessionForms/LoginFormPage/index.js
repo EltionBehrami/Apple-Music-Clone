@@ -63,7 +63,7 @@ const LoginFormPage = ({ modal }) => {
                     <div className="subtitle">Enter your email and password to get started.</div>
                         <input id="login-email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         <input id="login-password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        <button className="login-button" type="submit">L</button>
+                        <button className="login-button" type="submit">Sign In</button>
                         <button className="exit-button" onClick={() => dispatch(closeModal("null"))}> X </button>
                         <button id="demo" onClick={handleDemo}>Demo User</button>
                 </div>

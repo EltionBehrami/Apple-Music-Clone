@@ -95,6 +95,7 @@
 }
 
 #album-play-button {
+    display: none;
     background-color: #d60117;
     border-radius: 5px;
     color: white;
