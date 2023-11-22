@@ -84,8 +84,11 @@
 }
 
 #playlist-play {
+    display: flex;
+    justify-content: space-between;
     /* border: solid 1px rgb(31, 207, 31); */
     margin-left: 35px;
+    margin-right: 35px;
 }
 
 #playlist-play-button {

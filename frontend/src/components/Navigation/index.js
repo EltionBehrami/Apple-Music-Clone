@@ -11,10 +11,13 @@ const Navigation = () => {
     const playlists = useSelector(state => state.playlists)
     const playlistsArray = Object.values(playlists)
     const dispatch = useDispatch(); 
+    const currentUser = useSelector(state => state.session.user)
 
     useEffect(() => {
-        dispatch(fetchPlaylists())
-    }, [])
+        if (currentUser){
+            dispatch(fetchPlaylists())
+        }
+    }, [currentUser, dispatch])
 
     debugger
 
@@ -26,10 +29,10 @@ const Navigation = () => {
                         <button id="album-link"><NavLink to="/albums" className="inactive-link" activeClassName="active-albums-link"> Albums</NavLink></button>
                         <button id="song-link"><NavLink to="/songs" className="inactive-link" activeClassName="active-songs-link"> Songs</NavLink></button>
                     </ul>
-                    <ul className="playlist-links"></ul>
+                    {currentUser && <ul className="playlist-links"> 
                         <button id="playlists-link"><NavLink to="/playlists" className="inactive-link" activeClassName="active-playlists-link">Playlists</NavLink></button>
                         {playlistsArray.map(playlist => <button className="playlist-link"> <NavLink to={`/playlists/${playlist.id}`} className="inactive-link"  activeClassName="active-playlists-link">{playlist.title}</NavLink></button>)}
-                    
+                    </ul> }
             </div>
         </>
     )

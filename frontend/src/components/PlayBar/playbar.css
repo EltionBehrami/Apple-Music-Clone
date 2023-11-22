@@ -68,8 +68,8 @@
 
 .volume-container {
     /* border: aqua 1px solid; */
-    margin-right: auto;
-    margin-left: 150px;
+    /* margin-right: auto; */
+    /* margin-left: 150px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,7 +102,7 @@
     background-color: #fff;
     border-radius: 50%;
     border: 1px solid #ccc;
-    transform: translateY(-35%);
+    transform: translateY(-35%) translateX(100%);
 }
 
   
