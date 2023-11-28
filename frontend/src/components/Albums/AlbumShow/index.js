@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { fetchAlbum, getAlbum, getAlbumSongs } from "/Users/eltionbehrami/apple_music_clone/frontend/src/store/albums.js";
+import { Redirect, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { fetchAlbum, getAlbum, getAlbumSongs } from "../../../store/albums"
 import TracksIndex from "../Tracks/TracksIndex";
 import "./AlbumShow.css"
 
@@ -11,12 +11,14 @@ const AlbumShow = () => {
     const album = useSelector(getAlbum(albumId))
     const songs = useSelector(getAlbumSongs(albumId))
     const dispatch = useDispatch();  
+    const sessionUser = useSelector(state => state.session.user)
 
-
+    
     useEffect(() => {
-            dispatch(fetchAlbum(albumId))
+        dispatch(fetchAlbum(albumId))
     }, [dispatch, albumId])
-
+    
+    
     
     return (
         <>

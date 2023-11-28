@@ -1,11 +1,11 @@
 import ProfileButton from "./ProfileButton";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../store/modal";
-import "./playbar.css"
 import SongDisplay from "./SongDisplay";
 import Controls from "./Controls";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getSong } from "../../store/songs";
+import "./playbar.css"
 
 const PlayBar = () => {
     const dispatch = useDispatch();
@@ -17,7 +17,6 @@ const PlayBar = () => {
     const [duration, setDuration] = useState(0)
     const isPlaying = useSelector(state => state.playbar.isPlaying);
     const [volume, setVolume] = useState(.5);
-
     
 
     const queue = useSelector(state => state.playbar.queue);
@@ -92,7 +91,7 @@ const PlayBar = () => {
             <div className="playbar">
                 <audio ref={audioRef} src={currentSong?.songUrl} autoPlay={isPlaying} onLoadedMetadata={onLoadedMetadata}></audio>
                 <Controls audioRef={audioRef} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} queue={queue} currentSong={songId} progressBarRef={progressBarRef} duration={duration} setProgress={setProgress}/>
-                <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} setProgress={setProgress} duration={duration} setDuration={setDuration} currentSong={currentSong}/>
+                <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} setProgress={setProgress} duration={duration} setDuration={setDuration} currentSong={currentSong} currentSongId={currentSongId}/>
                 <div className="volume-container">
                     <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume} setDuration={setDuration}></input>
                 </div>

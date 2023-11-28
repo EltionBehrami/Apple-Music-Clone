@@ -18,7 +18,7 @@ const receiveAlbum = album => {
 }
 
 export const getAlbums = state => {
-    return state?.albums ? Object.values(state.albums) : []; 
+    return state?.albums ? state.albums : []; 
 }
 
 export const getAlbum = albumId => state => {

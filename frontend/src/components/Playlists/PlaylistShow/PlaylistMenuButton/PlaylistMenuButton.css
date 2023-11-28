@@ -1,5 +1,5 @@
 
-.track-dropdown {
+.playlist-dropdown {
     /* border: greenyellow 1px solid; */
     position: absolute;
     right: 5px;
@@ -8,11 +8,11 @@
     width: 184px;
 }
 
-#track-button:hover {
+#playlist-button:hover {
     cursor: pointer;
 }
 
-#create-playlist-button {
+#delete-playlist-button {
     display: flex;
     align-items: center;
     height: 32px;

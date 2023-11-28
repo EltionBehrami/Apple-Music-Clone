@@ -25,7 +25,7 @@ export const getSong = songId => state => {
 }
 
 export const getSongs = state => {
-    return state?.songs ? Object.values(state.songs) : [];
+    return state?.songs ? state.songs : [];
 }
 
 export const fetchSongs = () => async dispatch => {
@@ -49,11 +49,11 @@ const songsReducer = (state = {}, action) => {
     const newState = {...state}
     switch (action.type) {
         case RECEIVE_SONGS:
-            return {...newState, ...action.songs}
+            return {...action.songs, ...newState}
         case RECEIVE_SONG:
             return {...newState, [action.song.id]: action.song} 
         case RECEIVE_ALBUM: 
-            return {...newState, ...action.album.albumSongs }
+            return {...action.album.albumSongs, ...newState }
         case SET_CURRENT_SONG:
             return {...newState, ...action.song}    
         default: 

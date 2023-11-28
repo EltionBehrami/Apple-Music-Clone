@@ -8,7 +8,10 @@ import "./PlaylistsIndex.css"
 const PlaylistsIndex = () => {
     const dispatch = useDispatch();
     const playlists = useSelector(getPlaylists);
+    const playlistsArray = Object.values(playlists)
     const currentUser = useSelector(state => state.session.user);
+
+    debugger
     
 
     useEffect(() => {
@@ -23,7 +26,7 @@ const PlaylistsIndex = () => {
                 <div className="playlist-index-header">Playlists</div>
             {currentUser && (
                 <div className="playlist-index-container">
-                    {playlists.map(playlist => <Link id="playlist-show-link" to={`/playlists/${playlist.id}`}> <PlaylistsIndexItem  playlist={playlist}/></Link>)}
+                    {playlistsArray.map(playlist => <Link id="playlist-show-link" to={`/playlists/${playlist.id}`}> <PlaylistsIndexItem  playlist={playlist}/></Link>)}
                 </div>
         )}
         </>
