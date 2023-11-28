@@ -5,13 +5,14 @@ import ProgressBar from "./ProgressBar";
 import { getAlbum } from "../../../store/albums";
 
 
-const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration, currentSong}) => {
-
+const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration, currentSong, currentSongId}) => {
+    
     const songId = useSelector(state => state.playbar.currentSong)
-    const song = useSelector(getSong(songId))
+    const song = useSelector(getSong(currentSongId))
     const isPlaying = useSelector(state => state.playbar.isPlaying);
     const albumId = song?.albumId
     const album = useSelector(getAlbum(albumId))
+    
     debugger
 
 
@@ -23,7 +24,7 @@ const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration
             </div>
             <div className="display-container">
                 <div id="display"> 
-                    <span>{song?.title}</span>
+                    <span>{currentSong?.title}</span>
                     <span className="song-display-artist">{song?.artistName}</span>
                 </div>
                 <ProgressBar progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} duration={duration}/>

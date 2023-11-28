@@ -47,7 +47,6 @@ const LoginFormPage = ({ modal }) => {
     };
 
 
-
     return (
             <form onSubmit={handleSubmit} className="login-form">
                 { errors && (

@@ -9,7 +9,6 @@ const Controls = ( { audioRef, currentSongIndex, setCurrentSongIndex, queue, cur
     const isPlaying = useSelector(state => state.playbar.isPlaying)
 
     
-    
     const next = () => {
         if (currentSongIndex < queue.length - 1){
             setCurrentSongIndex(currentSongIndex + 1)
@@ -22,16 +21,11 @@ const Controls = ( { audioRef, currentSongIndex, setCurrentSongIndex, queue, cur
         }
     }
 
-
-    
     const play = () => {
-
             if (currentSong) {
                 audioRef.current.currentTime = audioRef.current.currentTime || 0;
                 dispatch(playSong());
             }
-        
-    
     };
 
     const pause = () => {

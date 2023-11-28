@@ -1,10 +1,10 @@
 import LoginFormPage from "../SessionForms/LoginFormPage";
 import SignupFormPage from "../SessionForms/SignupFormPage";
 import { closeModal } from "../../store/modal";
-import "./modal.css"
 import { useDispatch, useSelector } from "react-redux";
 import PlaylistForm from "../Playlists/PlaylistForm";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import "./modal.css"
 
 
 
