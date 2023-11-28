@@ -67,18 +67,10 @@
 }
 
 .volume-container {
-    /* border: aqua 1px solid; */
-    margin-right: auto;
-    margin-left: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-/* #volume-icon {
-    fill: aqua;
-} */
-
 
 #volume {
     width: 75%;
@@ -94,7 +86,7 @@
     cursor: pointer;
 }
 
- 
+
 #volume::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 12px;
@@ -102,10 +94,10 @@
     background-color: #fff;
     border-radius: 50%;
     border: 1px solid #ccc;
-    transform: translateY(-35%);
+    transform: translateY(-35%) translateX(100%);
 }
 
-  
+
 #volume::-webkit-slider-runnable-track {
     height: 3px;
     background: #ccc;

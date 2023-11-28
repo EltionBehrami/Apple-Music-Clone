@@ -53,11 +53,11 @@ const SignupFormPage = ({ modal }) => {
                         {errors.map(error => <li key={error}>{error}</li>)}
                     </ul>
                     <div className="signup-form-items"> 
-                        <input id="signup-email"type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <input id="signup-email"type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.currentTarget.value)} required />
                         <div className="subheader">This email address will become your Cherry ID. </div>
-                        <input id="signup-password"type="password"  placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        <input id="signup-password"type="password"  placeholder="Password" value={password} onChange={(e) => setPassword(e.currentTarget.value)} required />
                         <div className="subheader">Your password must have at least 6 characters.</div>
-                        <input id="signup-confirm-password"type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                        <input id="signup-confirm-password"type="password" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.currentTarget.value)} required />
                         <input id="signup-firstname"type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.currentTarget.value)} required />
                         <input id="signup-lastname"type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.currentTarget.value)} required />
                         <input id="signup-birthdate"type="date" placeholder="Birthdate" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} required />

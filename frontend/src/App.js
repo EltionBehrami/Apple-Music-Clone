@@ -9,6 +9,7 @@ import AlbumShow from "./components/Albums/AlbumShow";
 import PlaylistsIndex from "./components/Playlists";
 import PlaylistShow from "./components/Playlists/PlaylistShow";
 import SongsIndex from "./components/Songs/SongsIndex";
+import Splash from "./components/Splash";
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
       <div className="playbar-container">
         <PlayBar />
         {/* <Switch> */}
+          <Route exact path="/">
+            <Splash />
+          </Route>
           <Route exact path="/albums">
             <AlbumsIndex />
           </Route>

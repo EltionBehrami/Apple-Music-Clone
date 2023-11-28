@@ -8,24 +8,21 @@ import "./AlbumsIndex.css"
 const AlbumsIndex = () => {
     const dispatch = useDispatch();
     const albums = useSelector(getAlbums);
+    const albumsArray = Object.values(albums)
     const currentUser = useSelector(state => state.session.user);
     
 
     useEffect(() => {
-        if (currentUser) {
             dispatch(fetchAlbums());
-        }
     }, [dispatch]);
 
 
     return (
-        <>
+        <>  
                 <div className="index-header">Albums</div>
-            {currentUser && (
                 <div className="index-container">
-                    {albums.map(album => <Link id="album-show-link" to={`/albums/${album.id}`}> <AlbumIndexItem  album={album}/></Link>)}
+                    {albumsArray.map(album => <Link id="album-show-link" to={`/albums/${album.id}`}> <AlbumIndexItem  album={album}/></Link>)}
                 </div>
-        )}
         </>
     )
 }

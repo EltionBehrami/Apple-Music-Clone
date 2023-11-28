@@ -1,24 +1,25 @@
 import csrfFetch from "./csrf";
+import { RECEIVE_PLAYLIST_SONG } from "./playlistSongs";
 
 export const RECEIVE_PLAYLISTS = "playlists/RECEIVE_PLAYLISTS"
 export const RECEIVE_PLAYLIST = "playlists/RECEIVE_PLAYLIST"
 export const REMOVE_PLAYLIST = "playlists/REMOVE_PLAYLIST"
 
-const receivePlaylists = (playlists) => {
+export const receivePlaylists = (playlists) => {
     return {
         type: RECEIVE_PLAYLISTS,
         playlists 
     }
 }
 
-const receivePlaylist = (playlist) => {
+export const receivePlaylist = (playlist) => {
     return {
         type: RECEIVE_PLAYLIST,
         playlist 
     }
 }
 
-const removePlaylist = (playlistId) => {
+export const removePlaylist = (playlistId) => {
     return {
         type: REMOVE_PLAYLIST,
         playlistId 
@@ -26,7 +27,7 @@ const removePlaylist = (playlistId) => {
 }
 
 export const getPlaylists = state => {
-    return state?.playlists ? Object.values(state.playlists) : []; 
+    return state?.playlists ? state.playlists : []; 
 }
 
 export const getPlaylist = playlistId => state => {
@@ -46,7 +47,7 @@ export const fetchPlaylist = (playlistId) => async dispatch => {
     const response = await csrfFetch(`/api/playlists/${playlistId}`);
     if (response.ok) {
         const data = await response.json(); 
-        dispatch(receivePlaylists(data))
+        dispatch(receivePlaylist(data))
     }
 }
 
@@ -79,15 +80,30 @@ export const updatePlaylist = (playlist) => async dispatch => {
     }
 }
 
+export const deletePlaylist = (playlistId) => async dispatch => {
+    const response = await csrfFetch(`/api/playlists/${playlistId}`, {
+        method: "DELETE"
+    }); 
+
+    if (response.ok) {
+        dispatch(removePlaylist(playlistId))
+    }
+}
+
 
 const playlistReducer = (state = {}, action) => {
     const newState = {...state}; 
     switch (action.type) {
         case RECEIVE_PLAYLISTS: 
-            return {...newState, ...action.playlists};
+            return {...action.playlists};
         case RECEIVE_PLAYLIST: 
-            return {...newState, [action.playlist.id]: action.playlist}
-           
+            return {...newState, [action.playlist.id]: action.playlist} 
+        case REMOVE_PLAYLIST: 
+            delete newState[action.playlistId];
+            return newState;
+        case RECEIVE_PLAYLIST_SONG: 
+            // newState[playlists]
+            // return {...newState, state.playlists.pla[action.song]}    
         default: 
             return state;
     }
