@@ -10,13 +10,23 @@ require "open-uri"
 
 # ApplicationRecord.transaction do 
     puts "Destroying tables..."
-    User.destroy_all 
+    PlaylistSong.destroy_all
+    Playlist.destroy_all
     Song.destroy_all 
     Album.destroy_all 
     Artist.destroy_all 
+    User.destroy_all 
+
+
 
     puts "Resetting primary keys..."
+    ApplicationRecord.connection.reset_pk_sequence!('songs')
+    ApplicationRecord.connection.reset_pk_sequence!('albums')
+    ApplicationRecord.connection.reset_pk_sequence!('artists')
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('playlists')
+    ApplicationRecord.connection.reset_pk_sequence!('playlist_songs')
+
 
     puts "Creating users..."
 
