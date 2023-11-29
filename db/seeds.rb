@@ -228,25 +228,6 @@ require "open-uri"
         genre: "Pop"
     })
 
-    # Motomami = Album.create!({
-    #     title:"MOTOMAMI", 
-    #     artist_id: 17, 
-    #     album_cover: 'https://is1-ssl.mzstatic.com/image/thumb/Video116/v4/81/4e/e5/814ee543-fa60-9af9-c646-b6e413625e3e/Jobb2441977-4c72-483f-b29b-16d36e46c151-128330761-PreviewImage_preview_image_nonvideo_sdr-Time1643738485657.png/632x632bb.webp',
-    #     genre: "Pop Latino"
-    # })
-
-
-
-
-
-#     50.times do Song.create!({
-#         title: Faker::Music::RockBand.song,
-#         artist_id: 1,
-#         album_id: rand(1..20),
-#         song_url: "/Users/eltionbehrami/apple_music_clone/frontend/src/01 The Adults Are Talking.mp3"
-#     })
-# end 
-
 
 Adults = Song.create!({
     title: "The Adults Are Talking",

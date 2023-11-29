@@ -1,6 +1,6 @@
 @font-face {
     font-family: SF Pro;
-    src: url('/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro.ttf') format('ttf')
+    src: url('../../../fonts/SF-Pro.ttf') format('ttf')
 }
 
 

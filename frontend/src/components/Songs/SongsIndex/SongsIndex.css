@@ -5,9 +5,8 @@
 
 @font-face {
     font-family: SF-Pro Display;
-    src: url(/Users/eltionbehrami/apple_music_clone/frontend/src/fonts/SF-Pro-Display-Regular.otf);
+    src: url('../../../fonts/SF-Pro-Display-Regular.otf');
 }
-
 .songs-index-container {
     
     height: 87.5%;
