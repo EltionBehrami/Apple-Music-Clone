@@ -24,11 +24,11 @@ export const getPlaylistSongs = playlistId => state => {
     const songs = [];
 
     Object.values(state.songs).forEach(song => {
-      const isInPlaylist = Object.values(state.playlistSongs).some(entry => entry.playlistId === playlistId && entry.songId === song.id);
+        const isInPlaylist = Object.values(state.playlistSongs).some(entry => entry.playlistId === playlistId && entry.songId === song.id);
 
-      if (isInPlaylist) {
-        songs.push(song);
-      }
+        if (isInPlaylist) {
+            songs.push(song);
+        }
     });
 
     return songs;
