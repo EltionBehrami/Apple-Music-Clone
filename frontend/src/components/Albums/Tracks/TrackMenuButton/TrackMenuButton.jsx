@@ -2,42 +2,62 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./TrackMenuButton.css"
 import { openModal } from "../../../../store/modal";
+import { addSongToPlaylist } from "../../../../store/playlists";
+import PlaylistsIndex from "../../../Playlists";
+import PlaylistMenu from "../PlaylistMenu/PlaylistMenu";
 
-const TrackMenuButton = () => {
+const TrackMenuButton = ({ track }) => {
 
     const dispatch = useDispatch(); 
     const [showTrackMenu, setShowTrackMenu] = useState(false)
+    const [showPlaylistMenu, setShowPlaylistMenu] = useState(false)
 
     const openTrackMenu = () => {
         if (showTrackMenu) return;  
             setShowTrackMenu(true)
     }
 
-    useEffect  (() => {
-        if (!showTrackMenu) return;
+    const openPlaylistMenu = () => {
+        if (showPlaylistMenu) return;  
+            setShowPlaylistMenu(true)
+    }
 
-        const closeTrackMenu = e => {
-                setShowTrackMenu(false)
+    useEffect(() => {
+        const closeMenus = () => {
+            if (showTrackMenu) {
+                setShowTrackMenu(false);
+            }
+
+            if (showPlaylistMenu) {
+                setShowPlaylistMenu(false);
+            }
+        };
+        
+        if (showTrackMenu || showPlaylistMenu) {
+            document.addEventListener("click", closeMenus);
         }
-            document.addEventListener("click", closeTrackMenu)
-    
-            return () => document.removeEventListener("click", closeTrackMenu)
-
-            
-    }, [showTrackMenu])
+        
+        return () => {
+            document.removeEventListener("click", closeMenus);
+        };
+    }, [showTrackMenu, showPlaylistMenu]);
 
 
     return (
-        <>
-            <svg id="track-button" width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"  onClick={openTrackMenu}>
+        <div onClick={(e) => e.stopPropagation()}>
+            <svg id="track-button" width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" onClick={openTrackMenu}>
                 <path d="M10.105 14c0-.87-.687-1.55-1.564-1.55-.862 0-1.557.695-1.557 1.55 0 .848.695 1.55 1.557 1.55.855 0 1.564-.702 1.564-1.55zm5.437 0c0-.87-.68-1.55-1.542-1.55A1.55 1.55 0 0012.45 14c0 .848.695 1.55 1.55 1.55.848 0 1.542-.702 1.542-1.55zm5.474 0c0-.87-.687-1.55-1.557-1.55-.87 0-1.564.695-1.564 1.55 0 .848.694 1.55 1.564 1.55.848 0 1.557-.702 1.557-1.55z" class="svelte-1wt9ndy"></path>
             </svg>
             {showTrackMenu && (
                 <ul className="track-dropdown">
-                    <button id="create-playlist-button" onClick={() => dispatch(openModal("create_playlist"))}>New Playlist</button>
+                    <li><button id="create-playlist-button" onClick={() => dispatch(openModal("create_playlist"))}>New Playlist</button></li>
+                    <li><button id="add-to-playlist-button" onClick={openPlaylistMenu}>Add to playlist</button></li>
                 </ul>
             )}
-        </>
+            {showPlaylistMenu && <div className="playlist-menu">
+                <PlaylistMenu track={track} />
+                </div>}
+        </div>
     )
 }
 

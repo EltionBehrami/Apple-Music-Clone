@@ -19,7 +19,6 @@ const Navigation = () => {
         }
     }, [currentUser, dispatch])
 
-    debugger
 
     return (
         <>

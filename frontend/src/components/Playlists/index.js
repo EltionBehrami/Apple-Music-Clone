@@ -11,7 +11,6 @@ const PlaylistsIndex = () => {
     const playlistsArray = Object.values(playlists)
     const currentUser = useSelector(state => state.session.user);
 
-    debugger
     
 
     useEffect(() => {
