@@ -5,6 +5,7 @@ export const RECEIVE_PLAYLISTS = "playlists/RECEIVE_PLAYLISTS"
 export const RECEIVE_PLAYLIST = "playlists/RECEIVE_PLAYLIST"
 export const REMOVE_PLAYLIST = "playlists/REMOVE_PLAYLIST"
 export const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST"
+export const REMOVE_SONG_FROM_PLAYLIST = "playlists/REMOVE_SONG_FROM_PLAYLIST"
 
 export const receivePlaylists = (playlists) => {
     return {
@@ -37,7 +38,16 @@ export const addSongToPlaylist = (playlistId, songId) => {
     }
 }
 
-
+export const removeSongFromPlaylist = (playlistSongId, songId, playlistId) => {
+    return {
+        type: REMOVE_SONG_FROM_PLAYLIST,
+        payload: {
+            playlistSongId,
+            songId,
+            playlistId
+        },
+    }
+}
 
 export const getPlaylists = state => {
     return state?.playlists ? state.playlists : []; 
@@ -49,13 +59,10 @@ export const getPlaylist = playlistId => state => {
 
 export const getPlaylistSongs = (playlistId) => (state) => {
     const playlistSongs = state.playlists[(playlistId)]?.playlistSongs || [];
-    
-    // Use filter to find songs with matching ids
     const songs = Object.values(state.songs)
         .filter(song => playlistSongs.includes(song.id)); 
-    // console.log(songs)
     return songs;
-  };
+};
 
 
 export const fetchPlaylists = () => async dispatch => {
@@ -90,7 +97,6 @@ export const createPlaylist = (playlist) => async dispatch => {
 }
 
 
-
 export const addToPlaylist = (playlistId, songId) => async dispatch => {
     const response = await csrfFetch(`/api/playlist_songs`, {
         method: "POST", 
@@ -104,6 +110,16 @@ export const addToPlaylist = (playlistId, songId) => async dispatch => {
         const data = await response.json(); 
         dispatch(addSongToPlaylist(data))
         return data 
+    }
+}
+
+export const deletePlaylistSong = (playlistSongId, playlistId, songId) => async dispatch => {
+    const response = await csrfFetch(`/api/playlist_songs/${playlistSongId}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        dispatch(removeSongFromPlaylist(playlistSongId, playlistId, songId))
     }
 }
 
@@ -142,31 +158,35 @@ const playlistReducer = (state = {}, action) => {
         case REMOVE_PLAYLIST: 
             delete newState[action.playlistId];
             return newState;
-        case RECEIVE_PLAYLIST_SONG: 
-            // newState[playlists]
-            // return {...newState, state.playlists.pla[action.song]}    
         case ADD_SONG_TO_PLAYLIST: 
         const { playlistId, songId } = action.payload;
-
-        // Find the playlist in state
         const playlistToUpdate = newState[playlistId];
-
         if (playlistToUpdate) {
-            // Update the playlistSongs array with the new songId
             const updatedPlaylist = {
                 ...playlistToUpdate,
                 playlistSongs: [...playlistToUpdate.playlistSongs, songId],
             };
-
-            // Update the state with the modified playlist
             return {
                 ...newState,
                 [playlistId]: updatedPlaylist,
             };
         }
-
-        // Return the original state if the playlistId is not found
         return newState;
+        
+        case REMOVE_SONG_FROM_PLAYLIST: 
+            const playlist = {...newState[action.payload.playlistId]}
+    
+            playlist.playlistSongs = playlist.playlistSongs.filter((id) => id !== action.payload.songId)
+            playlist.playlistSongIds = playlist.playlistSongIds.filter((id) => id !== action.payload.playlistSongId)
+
+            const updatedState =  {
+                ...newState, [action.payload.playlistId]: playlist,
+            };
+
+            return updatedState
+        case REMOVE_PLAYLIST: 
+            delete newState[action.playlistId];
+            return newState;
         default: 
             return state;
     }

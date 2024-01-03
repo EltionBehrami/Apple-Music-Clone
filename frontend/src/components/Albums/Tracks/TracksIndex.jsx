@@ -1,5 +1,5 @@
 import TracksIndexItem from "./TracksIndexItem"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurrentSong, setPlaylistQueue } from "../../../store/playbar";
 import { setQueue } from "../../../store/playbar";
@@ -9,7 +9,6 @@ const TracksIndex = ( {album, songs, playlist} ) => {
 
     const [activeItemId, setActiveItemId] = useState(null)
     const dispatch = useDispatch();
-    
 
     const handleItemClick = (song) => {
         setActiveItemId(song.id === activeItemId ? null : song.id);
@@ -32,6 +31,7 @@ const TracksIndex = ( {album, songs, playlist} ) => {
                     isActive={song.id === activeItemId}
                     handleItemClick={handleItemClick}
                     album={album}
+                    playlist={playlist}
                 />
             </li>)}
         </ul> 

@@ -2,7 +2,7 @@ import TrackMenuButton from "./TrackMenuButton/TrackMenuButton";
 import "./TracksIndexItem.css"
 import React, { useState, useEffect } from 'react';
 
-const TracksIndexItem = ({ track, isActive, handleItemClick, album}) => {
+const TracksIndexItem = ({ track, isActive, handleItemClick, album, playlist}) => {
 
 const [duration, setDuration] = useState(null);
 
@@ -41,7 +41,7 @@ const [duration, setDuration] = useState(null);
             </div>
             <div className="right-track-container">
                 <span onClick={() => handleItemClick(track)} id="track-duration">{duration !== null ? formatDuration(duration) : ''}</span>
-                <TrackMenuButton track={track}/>
+                <TrackMenuButton track={track} playlist={playlist}/>
             </div>
         </div>
     );

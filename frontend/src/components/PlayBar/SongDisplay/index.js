@@ -13,7 +13,6 @@ const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration
     const albumId = song?.albumId
     const album = useSelector(getAlbum(albumId))
     
-    debugger
 
 
     return (

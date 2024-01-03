@@ -23,7 +23,7 @@ const SongsIndex = () => {
         if (currentUser){
             dispatch(fetchSongs());
         }
-    }, [currentUser, dispatch])
+    }, [dispatch])
 
     
 

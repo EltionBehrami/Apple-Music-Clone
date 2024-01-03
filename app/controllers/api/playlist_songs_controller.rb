@@ -6,10 +6,10 @@ class Api::PlaylistSongsController < ApplicationController
         render :index 
     end 
 
-    # def show
-    #     @playlist_song = PlaylistSong.find(params[:id])
-    #     render :show 
-    # end 
+    def show
+        @playlist_song = PlaylistSong.find(params[:id])
+        render :show 
+    end 
 
     def create
         @playlist_song = PlaylistSong.new(playlist_song_params)
@@ -21,6 +21,8 @@ class Api::PlaylistSongsController < ApplicationController
     end 
 
     def destroy 
+        @playlist_song = PlaylistSong.find_by(id: params[:id])
+        @playlist_song.destroy
     end 
 
     private 
