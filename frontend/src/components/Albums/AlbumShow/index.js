@@ -17,7 +17,6 @@ const AlbumShow = () => {
     }, [dispatch, albumId])
     
     
-    
     return (
         <>
             <div className="album-show-container">

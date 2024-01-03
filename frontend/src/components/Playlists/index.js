@@ -25,7 +25,7 @@ const PlaylistsIndex = () => {
                 <div className="playlist-index-header">Playlists</div>
             {currentUser && (
                 <div className="playlist-index-container">
-                    {playlistsArray.map(playlist => <Link id="playlist-show-link" to={`/playlists/${playlist.id}`}> <PlaylistsIndexItem  playlist={playlist}/></Link>)}
+                    {playlistsArray.map(playlist => <Link key={playlist.id} id="playlist-show-link" to={`/playlists/${playlist.id}`}> <PlaylistsIndexItem  playlist={playlist}/></Link>)}
                 </div>
         )}
         </>
