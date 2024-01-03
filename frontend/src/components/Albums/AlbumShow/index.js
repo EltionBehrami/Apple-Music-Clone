@@ -12,7 +12,6 @@ const AlbumShow = () => {
     const songs = useSelector(getAlbumSongs(albumId))
     const dispatch = useDispatch();  
 
-    debugger
     useEffect(() => {
         dispatch(fetchAlbum(albumId))
     }, [dispatch, albumId])

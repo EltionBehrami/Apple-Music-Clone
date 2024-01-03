@@ -2,15 +2,24 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./TrackMenuButton.css"
 import { openModal } from "../../../../store/modal";
-import { addSongToPlaylist } from "../../../../store/playlists";
+import { addSongToPlaylist, deletePlaylistSong } from "../../../../store/playlists";
 import PlaylistsIndex from "../../../Playlists";
 import PlaylistMenu from "../PlaylistMenu/PlaylistMenu";
 
-const TrackMenuButton = ({ track }) => {
+const TrackMenuButton = ({ track, playlist }) => {
 
     const dispatch = useDispatch(); 
     const [showTrackMenu, setShowTrackMenu] = useState(false)
     const [showPlaylistMenu, setShowPlaylistMenu] = useState(false)
+    
+
+    const getPlaylistSongId = (track) => {
+        const playlistSongs = playlist.playlistSongs 
+        const playlistSongIds = playlist.playlistSongIds
+        const trackIndex = playlistSongs.indexOf(track.id)
+        const playlistSongId = playlistSongIds[trackIndex]
+        return playlistSongId
+    }
 
     const openTrackMenu = () => {
         if (showTrackMenu) return;  
@@ -20,6 +29,12 @@ const TrackMenuButton = ({ track }) => {
     const openPlaylistMenu = () => {
         if (showPlaylistMenu) return;  
             setShowPlaylistMenu(true)
+    }
+
+    const removeFromPlaylist = (track) => {
+        const playlistSongId = getPlaylistSongId(track)
+        debugger
+        dispatch(deletePlaylistSong(playlistSongId, track.id, playlist.id))
     }
 
     useEffect(() => {
@@ -52,6 +67,9 @@ const TrackMenuButton = ({ track }) => {
                 <ul className="track-dropdown">
                     <li><button id="create-playlist-button" onClick={() => dispatch(openModal("create_playlist"))}>New Playlist</button></li>
                     <li><button id="add-to-playlist-button" onClick={openPlaylistMenu}>Add to playlist</button></li>
+                    {playlist && (
+                        <li><button onClick={(e) => removeFromPlaylist(track)}>Remove from playlist</button></li>
+                    )}
                 </ul>
             )}
             {showPlaylistMenu && <div className="playlist-menu">

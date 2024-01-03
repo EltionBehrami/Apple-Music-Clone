@@ -82,7 +82,6 @@ const PlayBar = () => {
             <>
                 <button id="login-button" onClick={() => dispatch(openModal('login'))}>Sign In</button>
                 <button id="signup-button"onClick={() => dispatch(openModal('signup'))}>Sign Up</button>
-
             </>
         );
     } 
