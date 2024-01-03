@@ -24,10 +24,9 @@ const TracksIndex = ( {album, songs, playlist} ) => {
     return (
         <ul className="tracks-index-container ">
             {Object.values(songs).map((song, index) => 
-            <li onClick={() => handleItemClick(song)} className={index % 2 === 0 ? 'even' : 'odd'}>
+            <li key={song.id} onClick={() => handleItemClick(song)} className={index % 2 === 0 ? 'even' : 'odd'}>
                 <TracksIndexItem 
                     track={song}   
-                    key={song.id} 
                     isActive={song.id === activeItemId}
                     handleItemClick={handleItemClick}
                     album={album}

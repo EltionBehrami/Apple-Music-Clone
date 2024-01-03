@@ -1,32 +1,25 @@
-
+.track-menu-button-container{
+    position: relative;
+}
 .track-dropdown {
-    /* border: greenyellow 1px solid; */
+    right: 40px;
     position: absolute;
-    right: 75px;
-    /* bottom: 430px; */
     color: white;
     width: 184px;
 }
 
-.playlist-menu {
-    /* border: greenyellow 1px solid; */
+.playlist-menu-container {
     position: absolute;
-    right: 258px;
-    /* bottom: 430px; */
+    right: 228px;
     color: white;
     width: 184px;
-    display: flex;
+    display: flex-column;
     align-items: center;
-    height: 32px;
     border-style: none;
-    background-color: #26262667;
-    backdrop-filter: blur(20px);
     font-family: SF-Pro Text-Light;
-    color: #efeeeeeb;
-    border-top-left-radius: 5px; 
-    border-top-right-radius: 5px; 
-    border: rgb(70, 70, 70) solid 1px;
+    /* border: rgb(70, 70, 70) solid 1px; */
     font-size: smaller;
+
 }
 
 #track-button:hover {

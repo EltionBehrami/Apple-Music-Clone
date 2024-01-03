@@ -16,7 +16,7 @@ const PlayBar = () => {
     const [progress, setProgress] = useState(0)
     const [duration, setDuration] = useState(0)
     const isPlaying = useSelector(state => state.playbar.isPlaying);
-    const [volume, setVolume] = useState(.5);
+    const [volume, setVolume] = useState(0);
     
 
     const queue = useSelector(state => state.playbar.queue);
@@ -92,7 +92,7 @@ const PlayBar = () => {
                 <Controls audioRef={audioRef} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} queue={queue} currentSong={songId} progressBarRef={progressBarRef} duration={duration} setProgress={setProgress}/>
                 <SongDisplay progressBarRef={progressBarRef} audioRef={audioRef} progress={progress} setProgress={setProgress} duration={duration} setDuration={setDuration} currentSong={currentSong} currentSongId={currentSongId}/>
                 <div className="volume-container">
-                    <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume} setDuration={setDuration}></input>
+                    <input id="volume" type="range" min="0" max="1" step="0.01" value={volume} onChange={handleVolume} ></input>
                 </div>
                 <li className="session-links">
                 {sessionLinks}
