@@ -24,11 +24,9 @@ const PlaylistShow = () => {
         dispatch(fetchSongs())
     }, [dispatch, playlistId])
     
-    // const handleClick = () => {
-    //     // dispatch(openModal("edit_playlist"))
-    //     // dispatch(setPlaylistId(playlist))
-    //     // dispatch(fetchSongs());
-    // }
+    const handleClick = () => {
+        dispatch(openModal("edit_playlist"))
+    }
 
     const handleDeletePlaylist = () => {
         dispatch(deletePlaylist(playlistId))
@@ -48,7 +46,7 @@ const PlaylistShow = () => {
                             <div className="album-genre" > {playlist?.description} </div>
                         </div>
                         <div id="playlist-play"> 
-                            <button id="playlist-play-button" > Play </button>
+                            <button id="playlist-play-button" > Edit  </button>
                             <PlaylistMenuButton handleDeletePlaylist={handleDeletePlaylist} />
                         </div>
                     </div>
