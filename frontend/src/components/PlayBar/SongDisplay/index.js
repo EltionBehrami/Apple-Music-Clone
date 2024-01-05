@@ -18,9 +18,11 @@ const SongDisplay = ( {progressBarRef, audioRef, progress, duration, setDuration
     return (
 
         <div className="songdisplay-container">
-            <div className="song-album-art"> 
-            <img id="song-album-display" src={album?.albumCover}></img>
-            </div>
+            {album && (
+                <div className="song-album-art"> 
+                <img id="song-album-display" src={album?.albumCover}></img>
+                </div>
+            )}
             <div className="display-container">
                 <div id="display"> 
                     <span>{currentSong?.title}</span>
