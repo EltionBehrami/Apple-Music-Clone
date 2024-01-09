@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PlaylistForm from "../Playlists/PlaylistForm";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./modal.css"
+import AccessModal from "../AccessModal";
 
 
 
@@ -35,7 +36,9 @@ const Modal = () => {
             component = <PlaylistForm playlistId={playlistId}  modal={"null"}/>
             modalClass = "small-modal-child"
         break;
-
+        case 'gain_access': 
+            component = <AccessModal modal={"null"} />;
+            break;
         default:
             return null;
     }

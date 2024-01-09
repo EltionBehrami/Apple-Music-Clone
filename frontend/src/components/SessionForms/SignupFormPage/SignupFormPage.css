@@ -51,6 +51,7 @@
     color: white;
     margin-bottom: 12px;
 }
+
 #signup-password {
     background-color: #262628;
     padding: 3%;
@@ -62,6 +63,7 @@
     color: white;
     margin-bottom: 12px;
 }
+
 #signup-confirm-password {
     background-color: #262628;
     padding: 3%;
@@ -85,6 +87,7 @@
     color: white;
     margin-bottom: 15px;
 }
+
 #signup-lastname {
     background-color: #262628;
     padding: 3%;
@@ -96,6 +99,7 @@
     color: white;
     margin-bottom: 15px;
 }
+
 #signup-birthdate {
     background-color: #262628;
     padding: 3%;
@@ -107,8 +111,6 @@
     color: white;
     margin-bottom: 15px;
 }
-
-
 
 .cherry-id{
     font-family: SF-Pro Display;
@@ -128,7 +130,6 @@
     font-size: small;
     font-family: SF-Pro Text-Regular;
     margin-bottom: 10px;
-
 }
 
 .submit-button {

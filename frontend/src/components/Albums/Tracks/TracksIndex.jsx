@@ -1,23 +1,29 @@
 import TracksIndexItem from "./TracksIndexItem"
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentSong, setPlaylistQueue } from "../../../store/playbar";
 import { setQueue } from "../../../store/playbar";
 import "./TracksIndex.css"
+import { openModal } from "../../../store/modal";
 
 const TracksIndex = ( {album, songs, playlist} ) => {
 
     const [activeItemId, setActiveItemId] = useState(null)
     const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session.user)
 
     const handleItemClick = (song) => {
         setActiveItemId(song.id === activeItemId ? null : song.id);
-        dispatch(setCurrentSong(song.id))
-        if (album) {
-            dispatch(setQueue(album))
-        }
-        if (playlist) {
-            dispatch(setPlaylistQueue(playlist))
+        if (currentUser) {
+            dispatch(setCurrentSong(song.id))
+            if (album) {
+                dispatch(setQueue(album))
+            }
+            if (playlist) {
+                dispatch(setPlaylistQueue(playlist))
+            }
+        } else {
+            dispatch(openModal("gain_access"))
         }
     };
 

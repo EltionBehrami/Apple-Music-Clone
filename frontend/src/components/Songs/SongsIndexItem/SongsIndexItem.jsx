@@ -1,6 +1,6 @@
 
 
-const SongsIndexItem = ( {song }) => {
+const SongsIndexItem = ( { song }) => {
 
     return (
         <span>{song.title}</span>
