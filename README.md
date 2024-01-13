@@ -4,6 +4,8 @@ Cherry Music is a clone of Apple Music, providing a seamless music streaming exp
 
 [Cherry Music](https://cherry-music.onrender.com/)
 
+![Cherry Music Splash](./frontend/public/cherrysplash.png)
+
 ## Technologies Used
 
 - **Frontend:** React, Redux, CSS
