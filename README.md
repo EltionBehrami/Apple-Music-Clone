@@ -56,6 +56,8 @@ const pause = () => {
 
 Users can personalize their music experience by creating and managing playlists. The implementation includes CRUD operations for playlists, ensuring a tailored and consistent playlist experience across devices.
 
+This code snippet is part of a Redux reducer handling actions related to adding or removing songs from playlists in a music app.
+
 ```javacript
 case ADD_SONG_TO_PLAYLIST: 
         const { playlistId, songId } = action.payload;
@@ -81,8 +83,21 @@ case REMOVE_SONG_FROM_PLAYLIST:
             ...newState, [action.payload.playlistId]: playlist,
         };
 
-        return updatedState
+        return updatedState;
 ```
+
+### To add a song to a playlist: 
+* It extracts playlistId and songId from the action payload.
+* It checks if the playlist with playlistId exists in the current state (newState).
+* If the playlist exists, it creates an updated playlist with the new song added to the playlistSongs array.
+
+### To delete a song from a playlist: 
+
+* It creates a copy of the playlist object using the playlistId from the action payload.
+* It filters out the specified songId from both playlistSongs and playlistSongIds arrays in the playlist.
+* The updated state is returned with the modified playlist.
+
+
 
 
 ## Conclusion
