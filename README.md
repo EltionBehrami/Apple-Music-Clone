@@ -98,9 +98,13 @@ case REMOVE_SONG_FROM_PLAYLIST:
 * The updated state is returned with the modified playlist.
 
 
-
-
 ## Conclusion
 
 Cherry Music delivers a feature-rich music streaming experience, combining the elegance of Apple Music with the flexibility of a custom-built solution. The use of React, Redux, Ruby on Rails, PostgreSQL, and AWS showcases a harmonious synergy between frontend, backend, database, and cloud technologies, providing users with a seamless and enjoyable music platform.
+
+### Features in Development:
+
+- **Search Functionality:** Soon, Cherry Music will introduce a powerful search feature, allowing you to find your favorite songs, artists, and playlists with precision.
+
+We appreciate your support and look forward to bringing you more exciting updates. Stay tuned for an even more dynamic and feature-rich Cherry Music experience!
 
