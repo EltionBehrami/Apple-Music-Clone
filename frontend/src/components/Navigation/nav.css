@@ -169,6 +169,6 @@
 
 #home {
     font-size: 25px;
-    border: solid blue 1px;
+    /* border: solid blue 1px; */
     width: fit-content
 }
