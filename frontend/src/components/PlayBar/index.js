@@ -75,10 +75,10 @@ const PlayBar = () => {
                         setVolume(audioRef.current.volume);
                         playAnimationRef.current = requestAnimationFrame(repeat);
                     })
-                    .catch(error => {
-                        // Autoplay was prevented
-                        console.log('Autoplay prevented');
-                    });
+                    // .catch(error => {
+                    //     // Autoplay was prevented
+                    //     console.log('Autoplay prevented');
+                    // });
             }
         };
     

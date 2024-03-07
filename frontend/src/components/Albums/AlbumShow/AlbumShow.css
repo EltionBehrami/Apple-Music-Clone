@@ -22,6 +22,7 @@
     margin-top: 40px;
     color :#ffffffeb;
     height: 33.5%;
+    /* border: blue solid 1px; */
 }
 
 .album-show-cover {
@@ -77,7 +78,7 @@
 }
 
 #album-play-button {
-    display: none;
+    /* display: none; */
     background-color: #d60117;
     border-radius: 5px;
     color: white;
