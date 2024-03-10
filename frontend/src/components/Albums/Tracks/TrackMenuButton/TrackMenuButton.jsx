@@ -5,6 +5,7 @@ import { openModal } from "../../../../store/modal";
 import { addSongToPlaylist, deletePlaylistSong } from "../../../../store/playlists";
 import PlaylistsIndex from "../../../Playlists";
 import PlaylistMenu from "../PlaylistMenu/PlaylistMenu";
+import { addToQueue, playNext } from "../../../../store/playbar";
 
 const TrackMenuButton = ({ track, playlist }) => {
 
@@ -51,6 +52,14 @@ const TrackMenuButton = ({ track, playlist }) => {
         }
     };
 
+    const addToNext = (song) => {
+        dispatch(playNext(song))
+    }
+
+    const playLast = (song) => {
+        dispatch(addToQueue(song))
+    }
+
     useEffect(() => {
         
         if (showTrackMenu || showPlaylistMenu) {
@@ -71,10 +80,13 @@ const TrackMenuButton = ({ track, playlist }) => {
             {showTrackMenu && (
                 <ul className="track-dropdown">
                     <li><button id="create-playlist-button" onClick={() => dispatch(openModal("create_playlist"))}>New Playlist</button></li>
-                    <li><button id="add-to-playlist-button" onClick={openPlaylistMenu}>Add to playlist</button></li>
+                    <li><button id="add-to-playlist-button" onClick={openPlaylistMenu}>Add to a Playlist</button></li>
+                    <li><button id="play-next-button" onClick={() => addToNext(track)}>Play Next</button></li>
+                    <li><button id="play-last-button" onClick={() => playLast(track)}>Play Last</button></li>
                     {playlist && (
-                        <li><button onClick={(e) => removeFromPlaylist(track)}>Remove from playlist</button></li>
+                        <li><button onClick={(e) => removeFromPlaylist(track)}>Remove from Playlist</button></li>
                     )}
+
                 </ul>
             )}
             {showPlaylistMenu && <div onClick={closeMenus} className="playlist-menu-container">

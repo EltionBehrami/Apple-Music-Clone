@@ -9,6 +9,8 @@ export const NEXT = "NEXT"
 export const PREVIOUS = "PREVIOUS"
 export const SHUFFLE = "SHUFFLE"
 export const UNSHUFFLE = "UNSHUFFLE"
+export const ADD_TO_QUEUE = "ADD_TO_QUEUE"
+export const PLAY_NEXT = "PLAY_NEXT"
 
 export const playSong = () => {
     return {
@@ -72,6 +74,20 @@ export const setSongQueue = songId => {
     }
 }
 
+export const playNext = (song) => {
+    return {
+        type: PLAY_NEXT,
+        song
+    }
+}
+
+export const addToQueue = (song) => {
+    return {
+        type: ADD_TO_QUEUE, 
+        song
+    }
+}
+
 
 const initialState = {
     isPlaying: false,
@@ -131,6 +147,21 @@ const playbarReducer = (state = initialState, action) => {
                 return { ...newState, queue: state.originalQueue, originalQueue: [], currentSongIndex: newCurrentSongIndex };
             }
             return state;
+        case PLAY_NEXT: 
+            const newQueue = state.queue 
+            const currentSongIndex = state.currentSongIndex
+            newQueue.splice(currentSongIndex + 1, 0, action.song.id)
+            debugger
+            return {
+                ...state,
+                queue: newQueue,
+            };
+        case ADD_TO_QUEUE: 
+            return {
+                ...state,
+                queue: [...state.queue, action.song.id],
+            };
+        
         default: 
             return state;     
     }    
