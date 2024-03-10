@@ -32,7 +32,6 @@ const PlayBar = () => {
         }
     }, [currentSongIndex, queue, currentSongId, dispatch]);
 
-
     const onLoadedMetadata = () => {
     const seconds = audioRef.current.duration;
     setDuration(seconds);
@@ -78,7 +77,6 @@ const PlayBar = () => {
         };
 
         const onEnded = () => {
-            // Dispatch the action to play the next song
             dispatch(nextSong());
         };
 
@@ -95,13 +93,6 @@ const PlayBar = () => {
             audioRef.current.removeEventListener('ended', onEnded);
         };
     }, [isPlaying, audioRef, repeat]);
-
-    // useEffect(() => {
-    //     // const audioEle = document.querySelector("audio")
-    //     const audioEle = audioRef.current
-    //     audioEle.addEventListener("ended", () => handleNext())
-    // }, [audioRef, dispatch])
-
 
     let sessionLinks; 
     if (sessionUser) {

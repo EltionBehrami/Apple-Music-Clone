@@ -100,7 +100,10 @@ const playbarReducer = (state = initialState, action) => {
             return {...newState, queue: [action.songId]}
         case NEXT:
             const nextIndex = state.currentSongIndex + 1;
-            return { ...state, currentSongIndex: nextIndex };
+            const isLastSong = nextIndex >= state.queue.length;
+            return isLastSong
+                ? { ...state }
+                : { ...state, currentSongIndex: nextIndex };
         case PREVIOUS:
             const prevIndex = state.currentSongIndex - 1;
             return { ...state, currentSongIndex: prevIndex }; 
