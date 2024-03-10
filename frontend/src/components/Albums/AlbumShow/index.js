@@ -24,7 +24,7 @@ const AlbumShow = () => {
         dispatch(fetchAlbum(albumId))
     }, [dispatch, albumId])
 
-    debugger
+    // debugger
 
     const handleItemClick = (firstSong) => {
         setActiveItemId(firstSong.id === activeItemId ? null : firstSong.id);

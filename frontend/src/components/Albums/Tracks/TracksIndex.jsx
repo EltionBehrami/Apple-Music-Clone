@@ -15,15 +15,16 @@ const TracksIndex = ( {album, songs, playlist} ) => {
     const handleItemClick = (song) => {
         setActiveItemId(song.id === activeItemId ? null : song.id);
         if (currentUser) {
-            dispatch(setCurrentSong(song.id))
             if (album) {
-                dispatch(setQueue(album))
+                dispatch(setQueue(album));
+                dispatch(setCurrentSong(song));
             }
             if (playlist) {
-                dispatch(setPlaylistQueue(playlist))
+                dispatch(setPlaylistQueue(playlist));
+                dispatch(setCurrentSong(song));
             }
         } else {
-            dispatch(openModal("gain_access"))
+            dispatch(openModal("gain_access"));
         }
     };
 
