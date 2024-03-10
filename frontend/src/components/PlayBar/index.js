@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { getSong } from "../../store/songs";
 import "./playbar.css"
 import Volume from "./Volume";
-import { setCurrentSong } from "../../store/playbar";
+import { nextSong, setCurrentSong } from "../../store/playbar";
 
 const PlayBar = () => {
     const dispatch = useDispatch();
@@ -76,13 +76,31 @@ const PlayBar = () => {
                     });
             }
         };
+
+        const onEnded = () => {
+            // Dispatch the action to play the next song
+            dispatch(nextSong());
+        };
+
     
         if (isPlaying) {
             handlePlay();
         } else {
             audioRef.current.pause();
         }
+
+        audioRef.current.addEventListener('ended', onEnded);
+
+        return () => {
+            audioRef.current.removeEventListener('ended', onEnded);
+        };
     }, [isPlaying, audioRef, repeat]);
+
+    // useEffect(() => {
+    //     // const audioEle = document.querySelector("audio")
+    //     const audioEle = audioRef.current
+    //     audioEle.addEventListener("ended", () => handleNext())
+    // }, [audioRef, dispatch])
 
 
     let sessionLinks; 
