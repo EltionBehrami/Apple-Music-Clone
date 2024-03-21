@@ -4,7 +4,10 @@ const Splash = () => {
     return (
         <div id="splash-container">
             <div className="class-header-container">
-                <div className="splash-title">Cherry Music</div>
+                <div className="splash-title">
+                    <img src="frontend/public/cherry-music-logo.png"/>
+                    Cherry Music
+                </div>
                 <div className="splash-discover">Discover new music every day.</div>
                 <div className="splash-browse">Browse through albums and songs and create your own playlists.</div>
             </div>

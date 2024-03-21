@@ -38,6 +38,7 @@ const TracksIndex = ( {album, songs, playlist} ) => {
                     handleItemClick={handleItemClick}
                     album={album}
                     playlist={playlist}
+                    index={index}
                 />
             </li>)}
         </ul> 
