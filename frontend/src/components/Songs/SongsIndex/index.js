@@ -38,6 +38,7 @@ const SongsIndex = () => {
                         track={song}   
                         isActive={song.id === activeItemId}
                         handleItemClick={handleItemClick} 
+                        index={song.id - 1}
                         />
                 </li>)}
             </ul> 

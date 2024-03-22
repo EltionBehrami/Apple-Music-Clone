@@ -1,0 +1,6 @@
+.static-playlists {
+    display: flex;
+    padding: 10px;
+    justify-content: space-evenly;
+    padding-top: 75px;
+}

@@ -22,6 +22,7 @@ export const getAlbums = state => {
 }
 
 export const getAlbum = albumId => state => {
+    debugger
     return state?.albums ? state.albums[albumId] : null;
 }
 

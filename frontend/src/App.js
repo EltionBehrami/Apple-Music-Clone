@@ -10,6 +10,7 @@ import PlaylistsIndex from "./components/Playlists";
 import PlaylistShow from "./components/Playlists/PlaylistShow";
 import SongsIndex from "./components/Songs/SongsIndex";
 import Splash from "./components/Splash";
+import Browse from "./components/Browse/Browse";
 
 function App() {
 
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path="/playlists/:playlistId">
             <PlaylistShow />
+          </Route>
+          <Route exact path="/listen-now">
+            <Browse />
           </Route>
         {/* </Switch> */}
       </div>

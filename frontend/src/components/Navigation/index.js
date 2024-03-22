@@ -25,6 +25,7 @@ const Navigation = () => {
             <div className="left-container">
                     <NavLink id="home" to="/">Cherry Music</NavLink>
                     <ul className="library-links">
+                        <li><button id="listen-now-link"><NavLink to="/listen-now" className="inactive-link" activeClassName="active-listen-now-link"> Listen Now</NavLink></button></li>
                         <li><button id="album-link"><NavLink to="/albums" className="inactive-link" activeClassName="active-albums-link"> Albums</NavLink></button> </li>
                         <li><button id="song-link"><NavLink to="/songs" className="inactive-link" activeClassName="active-songs-link"> Songs</NavLink></button></li>
                     </ul>
@@ -46,5 +47,7 @@ const Navigation = () => {
 }
 
 export default Navigation;
+
+
 
 
